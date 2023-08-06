@@ -6,7 +6,7 @@ title: "Beyond Technology"
 ---
 
 - 5X Marathoner
-- Olympic gold medalist
+- Adviser to the vice president
 - Fashion model
 - Michellin star restaurant owner
-- Adviser to the vice president
+- Olympic gold medalist

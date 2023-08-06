@@ -1,12 +1,12 @@
 ---
-import Main from "../layouts/Main.astro";
 import Cards from "../components/Cards.astro";
+import Main from "../layouts/Main.astro";
 
 const profilePicture = "https://source.unsplash.com/random"; // random image from unsplash
 const blogs = await Astro.glob<{
   poster: string;
-  title: string;
   subtitle: string;
+  title: string;
 }>("../pages/blogs/*.md");
 ---
 
