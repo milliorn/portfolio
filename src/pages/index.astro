@@ -3,6 +3,10 @@ import Cards from "../components/Cards.astro";
 import Main from "../layouts/Main.astro";
 
 const profilePicture = "https://source.unsplash.com/random"; // random image from unsplash
+const developerName = "Scott Milliorn";
+const developerTitle = "Software Engineer";
+const developerLocation = "California, USA";
+
 const blogs = await Astro.glob<{
   poster: string;
   subtitle: string;
@@ -12,15 +16,15 @@ const blogs = await Astro.glob<{
 
 <Main title="Astro">
   <div class="profile">
-    <img src={profilePicture} alt="random" class="profile__picture" />
+    <img src={profilePicture} alt="profile image" class="profile__picture" />
     <div class="profile__details">
-      <h1>Lorem ipsum</h1>
-      <h2>Lorem, ipsum dolor.</h2>
+      <h1>{developerName}</h1>
+      <h2>{developerTitle}</h2>
+      <h3>{developerLocation}</h3>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
-        nobis, laborum omnis est vero distinctio autem dolor saepe nesciunt quod
-        voluptatum ratione neque velit eligendi, dignissimos optio libero
-        doloribus? Architecto?
+        Highly skilled and innovative professional with expertise in designing,
+        developing, and maintaining web applications and software solutions.
+        Deep understanding of modern web technologies and frameworks.
       </p>
     </div>
   </div>
@@ -92,7 +96,7 @@ const blogs = await Astro.glob<{
   .profile__picture {
     border-radius: 50%;
     height: 100px;
-    margin: 0 2rem 1rem 0;
+    margin: 0 0 1rem 0;
     width: 100px;
   }
 
@@ -152,7 +156,7 @@ const blogs = await Astro.glob<{
     }
 
     .profile__picture {
-      margin: 0 2rem 0 0;
+      margin: 0 2rem 1rem 0;
     }
 
     .featured-blogs {
