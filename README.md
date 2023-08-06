@@ -1,2 +1,1 @@
-# portfolio
-Personal professional portfolio.
+# Personal portfolio
