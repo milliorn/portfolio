@@ -3,15 +3,15 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
     "astro": "astro",
+    "build": "astro build",
+    "dev": "astro dev",
+    "preview": "astro preview",
+    "start": "astro dev",
     "format": "prettier --write .",
+    "git-update": "git fetch && git pull",
     "lint": "eslint --fix --ext .js,.jsx,.ts,.tsx .",
-    "update": "npm update && npm install",
-    "git-update": "git fetch && git pull"
+    "update": "npm update && npm install"
   },
   "dependencies": {
     "astro": "^2.10.1"
