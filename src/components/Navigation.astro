@@ -1,0 +1,72 @@
+---
+---
+
+<nav>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/work-summary">Work</a></li>
+    <li>
+      <a href="/beyond-tech"> Tech</a>
+    </li>
+    <li>
+      <a href="/philosophies">Philosophies</a>
+    </li>
+  </ul>
+</nav>
+
+<script>
+  const { pathname } = window.location;
+  const activeNavigationElement = document.querySelector(
+    `nav a[href="${pathname}"]`
+  );
+
+  if (activeNavigationElement) {
+    activeNavigationElement.classList.add("active");
+  }
+</script>
+
+<style>
+  nav {
+    display: flex;
+    flex-wrap: wrap; /* Allow navigation items to wrap to the next line */
+    justify-content: center; /* Center the navigation items horizontally */
+    padding: 2rem 0; /* Add some space around navigation items */
+    text-align: center; /* Center the navigation items text */
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap; /* Allow navigation items to wrap to the next line */
+    justify-content: center; /* Center the navigation items horizontally */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    width: 100%; /* Set full width */
+  }
+
+  nav li {
+    font-size: 1.25rem; /* Larger font size */
+    list-style: none; /* Remove list bullets */
+    opacity: 0.8; /* Make navigation items slightly transparent */
+    padding: 0.5rem 0.875rem; /* Adjust padding for better spacing on mobile */
+  }
+
+  a {
+    border-radius: 0.25rem; /* Rounded corners */
+    color: var(--grey-600); /* Text color */
+    padding: 0.5rem 1rem; /* Adjust padding for better spacing on mobile */
+    text-decoration: none; /* Remove underline */
+    text-transform: capitalize; /* Capitalize links */
+    transition: all 0.2s ease-in-out; /* Add transition effect */
+  }
+
+  a.active {
+    background-color: var(--grey-200); /* Darken background on active */
+    color: var(--background); /* Darken text on active */
+  }
+
+  a:hover {
+    background-color: var(--grey-100); /* Darken background on hover */
+    color: var(--grey-800); /* Darken text on hover */
+  }
+</style>
