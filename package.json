@@ -1,0 +1,19 @@
+{
+  "name": "portfolio",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "format": "prettier --write .",
+    "lint": "eslint --fix --ext .js,.jsx,.ts,.tsx .",
+    "update": "npm update && npm install",
+    "git-update": "git fetch && git pull"
+  },
+  "dependencies": {
+    "astro": "^2.10.1"
+  }
+}
