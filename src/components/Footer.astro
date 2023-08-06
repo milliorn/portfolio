@@ -1,18 +1,21 @@
 ---
 const date = new Date().getFullYear();
+const owner = "Scott Milliorn";
 ---
 
 <footer>
   <div class="container text-center">
     <p>
-      &copy; {date} Your Website. All rights reserved.
+      &copy; {date}
+      {owner}.
     </p>
+    <p>All rights reserved.</p>
   </div>
 </footer>
 
 <style>
   footer {
-    font-size: 0.9rem;
+    font-size: 1rem;
     padding: 2rem 0;
     text-align: center;
   }
