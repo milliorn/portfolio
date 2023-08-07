@@ -1,7 +1,7 @@
 ---
 layout: ../layouts/Blog.astro
 poster: "https://source.unsplash.com/random?hobbies"
-subtitle: "Embracing My Diverse Passions, this is what I enjoy doing:"
+subtitle: "This is what I enjoy doing:"
 title: "Transcending Technology"
 ---
 
