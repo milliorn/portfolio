@@ -34,19 +34,19 @@ const blogs = await Astro.glob<{
       {
         gradientFrom: "#818cf8",
         gradientTo: "#d8b4fe",
-        title: "Here are my guiding philosophies for life",
+        title: "Guiding principles that shape my life",
         to: "/philosophies",
       },
       {
         gradientFrom: "#fde68a",
         gradientTo: "#fca5a5",
-        title: "A summary of my work history",
+        title: "Summary of my work history",
         to: "/work-summary",
       },
       {
         gradientFrom: "#6ee7b7",
         gradientTo: "#9333ea",
-        title: "What I do beyond technology",
+        title: "Endeavors I enjoy beyond technology",
         to: "/beyond-tech",
       },
     ]}
@@ -102,7 +102,7 @@ const blogs = await Astro.glob<{
 
   .featured-blogs {
     margin: 0 auto;
-    max-width: 640px;
+    max-width: 40rem;
     padding: 3rem 0 0 0;
   }
   .featured-blogs__title {
@@ -121,12 +121,12 @@ const blogs = await Astro.glob<{
     font-size: 1rem;
     font-weight: 500;
     margin: 0 auto;
-    max-width: 640px;
+    max-width: 40rem;
     padding: 0 0 0 1rem;
   }
 
   .blogs__list {
-    border-bottom: 1px solid var(--grey-200);
+    border-bottom: 0.125rem solid var(--grey-200);
     border-color: var(--grey-200);
     list-style: none;
   }

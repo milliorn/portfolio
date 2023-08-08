@@ -20,11 +20,11 @@ const { title, to, gradientFrom, gradientTo } = Astro.props;
 <style define:vars={{ gradientFrom, gradientTo }}>
   .card {
     /** local CSS variable reused below */
-    --radius: 10px;
+    --radius: 0.75rem;
     background: linear-gradient(135deg, var(--gradientFrom), var(--gradientTo));
     border-radius: var(--radius);
     box-shadow: 0 0 0 1px var(--grey-200), 0 2px 4px 0 var(--grey-200);
-    padding: 4px;
+    padding: 0.5rem;
     text-decoration: none;
     transition: all 0.2s ease-in-out;
   }
