@@ -74,47 +74,47 @@ const blogs = await Astro.glob<{
 
 <style>
   .profile {
-    align-items: flex-start;
+    align-items: flex-start; /* aligns children on the cross axis */
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
-    margin: 0 auto;
-    max-width: 640px;
+    justify-content: center; /* defines the alignment along the main axis */
+    margin: 0 auto; /* centers the element horizontally */
+    max-width: 40rem;
     padding: 1rem 0 3rem 0;
   }
 
   .profile__details {
-    flex: 1 1 100%;
-    text-align: center;
+    flex: 1 1 100%; /* shorthand for flex-grow, flex-shrink, and flex-basis */
+    text-align: center; /* defines the alignment along the inline axis */
   }
 
   .profile__details > h1 {
-    margin-top: 0;
+    margin-top: 0; /* removes the top margin */
   }
 
   .profile__picture {
-    border-radius: 50%;
-    height: 100px;
+    border-radius: 50%; /* rounds the corners of the element */
+    height: 6rem;
     margin: 0 0 1rem 0;
-    width: 100px;
+    width: 6rem;
   }
 
   .featured-blogs {
-    margin: 0 auto;
+    margin: 0 auto; /* centers the element horizontally */
     max-width: 40rem;
-    padding: 3rem 0 0 0;
+    padding: 3rem 0 0 0; 
   }
   .featured-blogs__title {
     color: var(--grey-900);
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 1.5rem; 
+    font-weight: 700; 
   }
 
   .featured-blogs__description {
     font-size: 1rem;
     font-weight: 500;
-    margin-top: -1.2rem;
+    margin-top: -1.2rem; 
   }
 
   .blogs {

@@ -13,7 +13,7 @@ type Props = {
 const { cards } = Astro.props;
 ---
 
-<div class="cards">
+<div class="cards"> 
   <!-- Dynamically render multiple Card components and spread the required card props -->
   {cards.map((card) => <Card {...card} />)}
 </div>
@@ -25,7 +25,6 @@ const { cards } = Astro.props;
     gap: 1rem;
   }
 
-  /* Since this is standard CSS, we can have media queries here */
   @media screen and (min-width: 768px) {
     .cards {
       flex-direction: row;
