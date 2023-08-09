@@ -13,7 +13,7 @@ type Props = {
 const { cards } = Astro.props;
 ---
 
-<div class="cards"> 
+<div class="cards">
   <!-- Dynamically render multiple Card components and spread the required card props -->
   {cards.map((card) => <Card {...card} />)}
 </div>

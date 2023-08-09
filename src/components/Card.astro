@@ -24,16 +24,16 @@ const { title, to, gradientFrom, gradientTo } = Astro.props;
   .card {
     /** local CSS variable reused below */
     --radius: 0.75rem;
-    background: linear-gradient(135deg, var(--gradientFrom), var(--gradientTo)); 
-    border-radius: var(--radius); 
-    box-shadow: 0 0 0 1px var(--grey-200), 0 2px 4px 0 var(--grey-200); 
-    padding: 0.5rem; 
-    text-decoration: none; 
+    background: linear-gradient(135deg, var(--gradientFrom), var(--gradientTo));
+    border-radius: var(--radius);
+    box-shadow: 0 0 0 1px var(--grey-200), 0 2px 4px 0 var(--grey-200);
+    padding: 0.5rem;
+    text-decoration: none;
     transition: all 0.2s ease-in-out;
   }
 
   .card:hover {
-    box-shadow: 0 0 0 1px var(--grey-300), 0 4px 8px 0 var(--grey-300); 
+    box-shadow: 0 0 0 1px var(--grey-300), 0 4px 8px 0 var(--grey-300);
     transform: scale(0.95);
   }
 
