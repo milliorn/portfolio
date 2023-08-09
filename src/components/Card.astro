@@ -10,10 +10,13 @@ const { title, to, gradientFrom, gradientTo } = Astro.props;
 ---
 
 <a href={to} class="card">
+  <!-- Render the link -->
   <div class="card__inner">
+    <!-- Inner container for background color -->
     <div class="card__title">{title}</div>
-    <!-- Render the arrow via HTML entity name: → = &rarr;-->
+    <!-- Render the title -->
     <div class="card__footer">&rarr;</div>
+    <!-- Render the arrow -->
   </div>
 </a>
 
