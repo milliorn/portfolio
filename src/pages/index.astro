@@ -2,11 +2,11 @@
 import Cards from "../components/Cards.astro";
 import Main from "../layouts/Main.astro";
 
-const profilePicture = "https://source.unsplash.com/random?scott"; // random image from unsplash
+const developerLocation = "California, USA";
 const developerName = "Scott Milliorn";
 const developerTitle = "Software Engineer";
-const developerLocation = "California, USA";
 const pageTitle = `${developerName} Portfolio`;
+const profilePicture = "https://source.unsplash.com/random?scott"; // random image from unsplash
 
 const blogs = await Astro.glob<{
   poster: string;

@@ -1,8 +1,8 @@
 ---
 layout: ../layouts/Blog.astro
 poster: "https://source.unsplash.com/random?programming"
-title: "Work History"
 subtitle: "An overview of my career:"
+title: "Work History"
 ---
 
 - Contributor<a href="https://github.com/nwn-dotnet" style="color: red;"  target="_blank" rel="noopener noreferrer"> | Neverwinter Nights .NET |</a> 2020 - Present

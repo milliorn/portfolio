@@ -1,9 +1,12 @@
 ---
 import Links from "../components/Links.astro";
 import Main from "../layouts/Main.astro";
+
+const developerName = "Scott Milliorn";
+const pageTitle = `About - ${developerName} Portfolio`;
 ---
 
-<Main title="About">
+<Main title={pageTitle}>
   <body>
     <h1>whoami?</h1>
     <p>
