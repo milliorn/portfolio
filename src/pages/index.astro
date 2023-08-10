@@ -2,10 +2,11 @@
 import Cards from "../components/Cards.astro";
 import Main from "../layouts/Main.astro";
 
-const profilePicture = "https://source.unsplash.com/random?scott"; // random image from unsplash
+const developerLocation = "California, USA";
 const developerName = "Scott Milliorn";
 const developerTitle = "Software Engineer";
-const developerLocation = "California, USA";
+const pageTitle = `${developerName} Portfolio`;
+const profilePicture = "https://source.unsplash.com/random?scott"; // random image from unsplash
 
 const blogs = await Astro.glob<{
   poster: string;
@@ -14,9 +15,11 @@ const blogs = await Astro.glob<{
 }>("../pages/blogs/*.md");
 ---
 
-<Main title="Astro">
+<Main title={pageTitle}>
   <div class="profile">
-    <img src={profilePicture} alt="profile image" class="profile__picture" />
+    <div class="profile__picture-container">
+      <img src={profilePicture} alt="profile image" class="profile__picture" />
+    </div>
     <div class="profile__details">
       <h1>{developerName}</h1>
       <h2>{developerTitle}</h2>
@@ -145,11 +148,33 @@ const blogs = await Astro.glob<{
     opacity: 0.7;
   }
 
+  .profile__picture-container {
+    border-radius: 9999px;
+    height: 6rem; /* Fix for aspect ratio */
+    margin: 0 0 1rem 0;
+    overflow: hidden;
+    width: 6rem; /* Fix for aspect ratio */
+  }
+
+  .profile__picture {
+    display: block;
+    height: 100%; /* Let the height adjust proportionally */
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
+    width: 100%; /* Ensure the image takes up the container's width */
+  }
+
   @media (min-width: 768px) {
     .profile {
       padding: 3rem 0 0 0;
     }
 
+    .profile__picture-container {
+      border-radius: 9999px;
+      height: 128px; /* Fix for aspect ratio */
+      width: 128px; /* Fix for aspect ratio */
+
+      padding: 0 2rem 0 0;
+    }
     .profile__details {
       flex: 1 1 50%;
       text-align: left;
