@@ -18,6 +18,7 @@
     "format": "prettier --write .",
     "git-update": "git fetch && git pull",
     "lint": "eslint --fix --ext .js,.jsx,.ts,.tsx .",
+    "lint:watch": "esw -w --clear --ext .js,.jsx,.ts,.tsx .",
     "update": "npm update && npm install"
   },
   "dependencies": {
@@ -27,6 +28,7 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.2.1",
     "@typescript-eslint/parser": "^6.2.1",
-    "eslint": "^8.46.0"
+    "eslint": "^8.46.0",
+    "eslint-watch": "^8.0.0"
   }
 }
