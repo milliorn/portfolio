@@ -8,6 +8,7 @@ subtitle: "What I do and learn, day to day, in Web Development"
 ## Table of Contents
 
 - [<span style="color: red;">How to Add ESLint to Your React Project</span>](#how-to-add-eslint-to-your-react-project)
+- [<span style="color: red;">Add a Meteor Effect to Your React Project</span>](#add-a-meteor-effect-to-your-react-project)
 
 ### How to Add ESLint to Your React Project
 
@@ -96,3 +97,5 @@ To learn more about the environments used in the above configuration, visit the 
 To learn more about the parser options used in the above configuration, visit the [<span style="color: red;">ESLint Parser Options</span>](https://eslint.org/docs/user-guide/configuring/language-options#specifying-parser-options) page.
 
 To learn more about the configuration used in the above configuration, visit the [<span style="color: red;">ESLint Configuration</span>](https://eslint.org/docs/user-guide/configuring) page.
+
+### Add a Meteor Effect to Your React Project
