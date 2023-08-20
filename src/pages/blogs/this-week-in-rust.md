@@ -89,10 +89,10 @@ Rust, known for its safety and performance, has been gaining popularity among de
 
 Our journey begins with the creation of the simplest form of a web server. We'll use nothing but Rust's standard networking types from the std::net module. Our goal is to accept HTTP requests and respond with a basic message. While we'll skip most of the HTTP specification details, we'll focus on understanding the fundamental flow of the server.
 
-First, we need to create a project. We'll use Cargo, Rust's package manager, to create a new project. We'll call our project `simple-web-server`.
+First, we need to create a project. We'll use **Cargo**, Rust's package manager, to create a new project. We'll call our project `simple-web-server`.
 
 ```bash
-cargo new simple-web-server
+$ cargo new simple-web-server
 ```
 
 This command creates a new project with the following structure:
@@ -104,7 +104,7 @@ simple-web-server
     └── main.rs
 ```
 
-The `Cargo.toml` file is the manifest file for our project. It contains the project's metadata and dependencies. The `src` directory contains the source code for our project. The `main.rs` file is the entry point for our application. We'll use this file to write our server code. Let's open the `Cargo.toml` file and add the following dependencies:
+The `Cargo.toml` file is the manifest file for our project. It contains **metadata and dependencies** for the project. The `src` directory contains the source code for our project. The `main.rs` file is the entry point for our application. We'll use this file to write our server code. Let's open the `Cargo.toml` file and add the following dependencies:
 
 HTTP, a text-based protocol built on top of TCP, necessitates the acceptance of TCP connections initially. This can be accomplished by creating a TcpListener as shown below:
 
