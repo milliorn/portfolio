@@ -9,6 +9,7 @@ title: "This Week in Rust"
 
 - [<span style="color: red;">Deref Trait in Rust</span>](#defef-trait-in-rust)
 - [<span style="color: red;">Building a Simple Web Server in Rust</span>](#building-a-simple-web-server-in-rust)
+- [<span style="color: red;">Actions and Calculations</span>](#actions-and-calculations)
 
 ### Deref Trait in Rust
 
@@ -317,3 +318,232 @@ In this blog post, we built a simple web server in Rust. We started by creating 
 While our server is rudimentary, it provides valuable insights into the foundational concepts of Rust web development. As we progress in our Rust journey, we'll explore more advanced topics such as async/await, multithreading, and working with external libraries like Tokio.
 
 Rust's robust standard library and powerful language features make it an excellent choice for web server development. Whether you're a seasoned Rustacean or just beginning your journey with the language, building a web server in Rust is an enlightening experience that showcases the language's elegance and capabilities. So, why not give it a try? Happy coding! 🦀
+
+### Actions and Calculations
+
+In this blog post, we'll explore a common pattern in Rust: separating actions and calculations. We'll start by looking at a simple example of this pattern in action. We'll then discuss the benefits of this pattern and how it can be applied to other areas of Rust development.
+
+#### Calculations
+
+Let's start with a simple example. Suppose we have a function that calculates the sum of two numbers:
+
+```rust
+fn sum(a: i32, b: i32) -> i32 {
+    a + b
+}
+```
+
+This function takes two numbers and returns their sum. It's a straightforward calculation that doesn't involve any side effects. We can call this function from anywhere in our code, and it will always return the same result for the same inputs. This function is a pure function.
+
+#### Actions
+
+Now, let's look at a function that prints the sum of two numbers:
+
+```rust
+fn print_sum(a: i32, b: i32) {
+    println!("{}", a + b);
+}
+```
+
+This function takes two numbers and prints their sum. It's an action that involves a side effect. We can call this function from anywhere in our code, and it will always print the same result for the same inputs. This function is an impure function.
+
+#### Differences between Actions and Calculations
+
+The key difference between actions and calculations is that actions involve side effects, while calculations do not. Side effects are changes to the state of the program that are not reflected in the return value of the function. For example, printing to the console is a side effect because it changes the state of the program but does not affect the return value of the function.
+
+#### Isolate Pure Functions
+
+In Rust, we can isolate pure functions from impure functions by using the `pure` keyword. This keyword tells the compiler that the function is pure and does not involve any side effects. The compiler will then enforce this by preventing us from calling the function from an impure context.
+
+```rust
+fn sum(arr: &[i32]) -> i32 {
+    arr.iter().fold(0, |acc, &x| acc + x)
+}
+
+#[test]
+fn test_sum() {
+    assert_eq!(sum(&[1, 2, 3, 4]), 10);
+}
+```
+
+#### Use Enums for Better Pattern Matching
+
+In functional programming, pattern matching is often used for branching logic. In Rust, you can take advantage of enums to make this elegant.
+
+```rust
+enum Shape {
+    Circle(f64),
+    Square(f64),
+}
+
+// Calculation: Calculate area based on the shape
+fn area(shape: &Shape) -> f64 {
+    match shape {
+        Shape::Circle(radius) => 3.14159 * radius * radius,
+        Shape::Square(side) => side * side,
+    }
+}
+```
+
+#### Use Result Type for Error Handling
+
+Actions, especially those involving IO, can fail. Use Rust's Result type to handle this gracefully.
+
+```rust
+use std::fs::File;
+use std::io::prelude::*;
+
+fn read_file(path: &str) -> Result<String, io::Error> {
+    let mut file = File::open(path)?;
+    let mut contents = String::new();
+    file.read_to_string(&mut contents)?;
+    Ok(contents)
+}
+```
+
+#### Use Option and Result in Function Signatures
+
+Use Option and Result in function signatures to make it clear that the function may fail.
+
+```rust
+fn find_element(arr: &[i32], key: i32) -> Option<i32> {
+    for &item in arr.iter() {
+        if item == key {
+            return Some(item);
+        }
+    }
+    None
+}
+```
+
+#### Separating Actions and Calculations
+
+To follow functional programming principles more closely, you should aim to separate actions and calculations as much as possible.
+
+```rust
+fn calculate_tax(income: f64) -> f64 {
+    income * 0.2
+}
+
+// Action
+fn save_to_database(data: f64) -> Result<(), &'static str> {
+    println!("Saving {} to database...", data); // Simulated action
+    Ok(())
+}
+
+// High-Level Orchestration
+fn process_income(income: f64) -> Result<(), &'static str> {
+    let tax = calculate_tax(income); // Calculation
+    save_to_database(tax) // Action
+}
+```
+
+#### Conclusion
+
+In this blog post, we've explored a common pattern in Rust: separating actions and calculations. We've seen how this pattern can be applied to a variety of situations, including error handling and branching logic. We've also seen how it can be used to make code more readable and maintainable. If you're interested in learning more about functional programming in Rust, check out the Rust Book. It's a great resource for learning the basics of Rust and functional programming in general.
+
+Here is a snippet to see all the code in action:
+
+```rust
+use std::fs::File;
+use std::io::Write;
+
+fn main() {
+    println!("Hello, world!");
+    let x = 5;
+    let y = 6;
+    let z = add(x, y);
+    println!("{} + {} = {}", x, y, z);
+
+    let data = "Some data";
+    write_to_file(data).expect("Failed to write to file");
+
+    let arr = [1, 2, 3, 4];
+    let total = sum(&arr);
+    println!("Sum of {:?} is {}", arr, total);
+
+    let circle = Shape::Circle(5.0);
+    let square = Shape::Square(5.0);
+    println!("Area of circle: {}", area(&circle));
+    println!("Area of square: {}", area(&square));
+
+    write_to_file_with_error("example.txt", "Some data").expect("Failed to write to file");
+
+    let arr = [1, 2, 3, 4];
+    let key = 3;
+    match find_element(&arr, key) {
+        Some(item) => println!("Found {} in {:?}", item, arr),
+        None => println!("Could not find {} in {:?}", key, arr),
+    }
+
+    let income = 1000.0;
+    process_income(income).expect("Failed to process income");
+
+}
+
+fn add(a: i32, b: i32) -> i32 {
+    a + b // Purely based on the input, no side-effects
+}
+
+fn write_to_file(data: &str) -> std::io::Result<()> {
+    let mut file = File::create("example.txt")?;
+    file.write_all(data.as_bytes()) // Has a side-effect (writes to a file)
+}
+
+// Calculation: Pure function for summing an array
+fn sum(arr: &[i32]) -> i32 {
+    arr.iter().fold(0, |acc, &x| acc + x)
+}
+
+// You can easily test this
+#[test]
+fn test_sum() {
+    assert_eq!(sum(&[1, 2, 3, 4]), 10);
+}
+
+enum Shape {
+    Circle(f64),
+    Square(f64),
+}
+
+// Calculation: Calculate area based on the shape
+fn area(shape: &Shape) -> f64 {
+    match shape {
+        Shape::Circle(radius) => 3.14159 * radius * radius,
+        Shape::Square(side) => side * side,
+    }
+}
+
+// Action: Writes a string to a file
+fn write_to_file_with_error(filename: &str, content: &str) -> std::io::Result<()> {
+    let mut file = File::create(filename)?;
+    file.write_all(content.as_bytes())
+}
+
+// Action: Trying to find an element in a list
+fn find_element(arr: &[i32], key: i32) -> Option<i32> {
+    for &item in arr.iter() {
+        if item == key {
+            return Some(item);
+        }
+    }
+    None
+}
+
+// Calculation
+fn calculate_tax(income: f64) -> f64 {
+    income * 0.2
+}
+
+// Action
+fn save_to_database(data: f64) -> Result<(), &'static str> {
+    println!("Saving {} to database...", data); // Simulated action
+    Ok(())
+}
+
+// High-Level Orchestration
+fn process_income(income: f64) -> Result<(), &'static str> {
+    let tax = calculate_tax(income); // Calculation
+    save_to_database(tax) // Action
+}
+```
