@@ -37,30 +37,25 @@
   }
 
   .sun {
-    /* Hide the sun icon by default. This assumes a light theme by default */
-    fill: transparent;
-  }
-
-  :global(.dark) .sun {
-    /* Show the sun icon when the dark theme is active */
+    /* Show the sun icon by default (for dark theme) */
     fill: #f1c40f;
   }
 
-  :global(.dark) .moon {
-    /* Hide the moon icon when the dark theme is active */
+  :global(.light) .sun {
+    /* Hide the sun icon when the light theme is active */
     fill: transparent;
+  }
+
+  :global(.light) .moon {
+    /* Show the moon icon when the light theme is active */
+    fill: someColor; /* Replace 'someColor' with the color you want for the moon icon */
   }
 </style>
 
 <script>
-  /** Represent the toggle theme class with a variable */
   const DARK_THEME_CLASS = "dark";
-
-  /** Grab the toggle */
   const toggle = document.querySelector("button");
-  /** Grab the document root element. In this case <html> */
   const rootEl = document.documentElement;
-
   const title = document.title;
 
   // Retrieve the theme from localStorage
@@ -68,7 +63,10 @@
 
   // If the user has a theme saved, apply it to the document root
   if (savedTheme) {
-    rootEl.classList.add(savedTheme); // Add the saved theme class to the root element
+    rootEl.classList.add(savedTheme);
+  } else {
+    // If no theme is saved, default to dark theme
+    rootEl.classList.add(DARK_THEME_CLASS);
   }
 
   // Listen for clicks on the toggle
