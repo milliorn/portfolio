@@ -22,7 +22,7 @@
     "update": "npm update && npm install"
   },
   "dependencies": {
-    "@astrojs/netlify": "^5.1.3",
+    "@astrojs/netlify": "^5.2.0",
     "astro": "^4.5.12"
   },
   "devDependencies": {
