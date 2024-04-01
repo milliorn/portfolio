@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@astrojs/netlify": "^5.1.3",
-    "astro": "^4.4.8"
+    "astro": "^4.5.12"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^7.0.0",
