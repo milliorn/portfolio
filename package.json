@@ -22,8 +22,8 @@
     "update": "npm update && npm install"
   },
   "dependencies": {
-    "@astrojs/netlify": "^5.2.0",
-    "astro": "^4.7.0"
+    "@astrojs/netlify": "^5.2.1",
+    "astro": "^4.9.2"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^7.0.0",
