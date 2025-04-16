@@ -7,6 +7,9 @@
   "repository": "https://github.com/milliorn/portfolio",
   "author": "Scott Milliorn",
   "license": "GPL-3.0-only",
+  "engines": {
+    "node": ">=18.14.1"
+  },
   "keywords": [
     "astro",
     "astrojs",
