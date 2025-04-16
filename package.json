@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "private": "true",
-  "description": "My Professional Portfolio",
+  "description": "A personal portfolio website built with Astro, showcasing projects, blog posts, and contact information",
   "repository": "https://github.com/milliorn/portfolio",
   "author": "Scott Milliorn",
   "license": "GPL-3.0-only",
