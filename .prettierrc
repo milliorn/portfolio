@@ -1,7 +1,4 @@
 {
   "plugins": ["prettier-plugin-astro"],
-  "printWidth": 80,
-  "singleQuote": true,
-  "semi": false,
-  "tabWidth": 2
+  "trailingComma": "es5"
 }

@@ -37,12 +37,13 @@
     "astro:info": "astro info",
     "astro:preview": "astro preview",
     "astro:sync": "astro sync",
+    "astro:telemetry": "astro telemetry",
     "astro:verbose": "astro dev --verbose",
     "astro:version": "astro version",
-    "astro:telemetry": "astro telemetry",
-    "prettier:write": "prettier --write .",
     "eslint:fix": "eslint --fix --ext .js,.jsx,.ts,.tsx .",
     "eslint:watch": "esw -w --clear --ext .js,.jsx,.ts,.tsx .",
+    "prettier:check": "prettier . --check",
+    "prettier:write": "prettier --write .",
     "tsc:check": "tsc --noEmit"
   },
   "dependencies": {

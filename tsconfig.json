@@ -5,12 +5,9 @@
   },
   // Tell tsc where your code lives:
   "include": [
-    "src/**/*",         // all of your .ts/.tsx/.js/.jsx code
-    "src/**/*.astro",   // Astro component files
-    "astro.config.*"    // your config file(s)
+    "src/**/*", // all of your .ts/.tsx/.js/.jsx code
+    "src/**/*.astro", // Astro component files
+    "astro.config.*" // your config file(s)
   ],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ]
+  "exclude": ["node_modules", "dist"]
 }
