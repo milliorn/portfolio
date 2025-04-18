@@ -1,12 +1,7 @@
 ---
-export type Props = {
-  gradientFrom: string;
-  gradientTo: string;
-  title: string;
-  to: string;
-};
+import type { CardProps } from './types'
 
-const { title, to, gradientFrom, gradientTo } = Astro.props;
+const { gradientFrom, gradientTo, title, to } = Astro.props as CardProps
 ---
 
 <a href={to} class="card">

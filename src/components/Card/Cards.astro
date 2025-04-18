@@ -2,15 +2,10 @@
 // Import the Card component
 import Card from "./Card.astro";
 // Import the Card Props type
-import type { Props as CardProp } from "./Card.astro";
-
-// Define the Props for this component
-type Props = {
-  cards: CardProp[]; // accepts an array of CardProps
-};
+import type { CardsProps } from "./types";
 
 // Retrieve the cards prop
-const { cards } = Astro.props;
+const { cards } = Astro.props as CardsProps;
 ---
 
 <div class="cards">

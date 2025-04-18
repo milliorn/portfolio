@@ -47,6 +47,7 @@
     "tsc:check": "tsc --noEmit"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.4",
     "@astrojs/netlify": "^6.2.5",
     "astro": "^5.2.3"
   },
@@ -56,6 +57,7 @@
     "eslint": "^8.57.1",
     "eslint-watch": "^8.0.0",
     "prettier": "^3.5.3",
-    "prettier-plugin-astro": "^0.14.1"
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript": "^5.8.3"
   }
 }
