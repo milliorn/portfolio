@@ -1,15 +1,15 @@
 ---
-import Footer from "../components/Footer.astro";
-import Navigation from "../components/Navigation.astro";
-import ThemeToggler from "../components/ThemeToggler.astro";
-import "../styles/global.css";
+import Footer from "../components/Footer.astro"
+import Navigation from "../components/Navigation.astro"
+import ThemeToggler from "../components/ThemeToggler.astro"
+import "../styles/global.css"
 
 type Props = {
-  title: string;
-};
+  title: string
+}
 
-const { title } = Astro.props;
----
+const { title } = Astro.props as Props
+---  <!-- end of front‑matter -->
 
 <html lang="en">
   <head>

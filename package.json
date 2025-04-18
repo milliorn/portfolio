@@ -44,7 +44,8 @@
     "eslint:watch": "esw -w --clear --ext .js,.jsx,.ts,.tsx .",
     "prettier:check": "prettier . --check",
     "prettier:write": "prettier --write .",
-    "tsc:check": "tsc --noEmit"
+    "tsc:check": "tsc --noEmit",
+    "tsc:watch": "tsc --watch"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",

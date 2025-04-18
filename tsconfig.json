@@ -1,7 +1,26 @@
 {
   "extends": "astro/tsconfigs/strictest",
-  "include": [
-    "src/**/*", // all of your .ts/.tsx/.js/.jsx code
-  ],
-  "exclude": ["node_modules", "dist"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"],
+  "compilerOptions": {
+    // Ensure emitted JS runs in strict mode
+    "alwaysStrict": true,
+
+    // Stronger type‑checking beyond `strict`
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    "useUnknownInCatchVariables": true,
+
+    // Find dead code & unused values
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+
+    // Cross‑platform safety
+    "forceConsistentCasingInFileNames": true
+  }
 }
