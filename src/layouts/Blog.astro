@@ -1,14 +1,11 @@
 ---
-import type { MarkdownLayoutProps } from "astro";
 import Main from "./Main.astro";
+import type { BlogProps } from "./types";
 
-type Props = MarkdownLayoutProps<{
-  poster: string;
-  subtitle: string;
-  title: string;
-}>;
+const props = Astro.props as BlogProps;
 
-const { title, poster, subtitle } = Astro.props.frontmatter;
+const { title, poster, subtitle } = props["frontmatter"]
+
 const developerName = "Scott Milliorn";
 const pageTitle = `${title} - ${developerName} Portfolio`;
 ---

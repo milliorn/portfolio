@@ -3,13 +3,10 @@ import Footer from "../components/Footer.astro"
 import Navigation from "../components/Navigation.astro"
 import ThemeToggler from "../components/ThemeToggler.astro"
 import "../styles/global.css"
+import type { MainProps } from "./types";
 
-type Props = {
-  title: string
-}
-
-const { title } = Astro.props as Props
----  <!-- end of front‑matter -->
+const { title } = Astro.props as MainProps
+---
 
 <html lang="en">
   <head>
