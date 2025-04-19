@@ -2,9 +2,8 @@
 import Main from "./Main.astro";
 import type { BlogProps } from "./types";
 
-const props = Astro.props as BlogProps;
-
-const { title, poster, subtitle } = props["frontmatter"]
+const {frontmatter} = Astro.props as BlogProps
+const {title, poster, subtitle} = frontmatter;
 
 const developerName = "Scott Milliorn";
 const pageTitle = `${title} - ${developerName} Portfolio`;
