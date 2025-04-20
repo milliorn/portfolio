@@ -1,36 +1,28 @@
-/* ────────────────────────────────────────────────────────────
-  Theme Variables
-────────────────────────────────────────────────────────────── */
-:root {
-  --color-bg: white;
-  --color-grey-200: #222222;
-  --color-grey-400: #444444;
-  --color-grey-600: #333333;
-  --color-grey-900: #111111;
+html {
+  --background: white;
+  --grey-200: #222222;
+  /* #eaeaea; */
+  --grey-400: #444444;
+  /* #acacac; */
+  --grey-600: #333333;
+  /* #ffffff; */
+  --grey-900: #111111;
+  /* #fafafa; */
 }
 
 html.dark {
-  --color-bg: black;
-  --color-grey-200: #eaeaea;
-  --color-grey-400: #acacac;
-  --color-grey-600: #ffffff;
-  --color-grey-900: #fafafa;
-}
-
-/* ────────────────────────────────────────────────────────────
-  Base Reset
-────────────────────────────────────────────────────────────── */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+  --background: black;
+  --grey-200: #eaeaea;
+  /* #222222; */
+  --grey-400: #acacac;
+  /* #444444; */
+  --grey-600: #ffffff;
+  /* #333333; */
+  --grey-900: #fafafa;
+  /* #111111; */
 }
 
 body {
-  background-color: var(--color-bg);
-  color: var(--color-grey-600);
-  margin: 0;
-  padding-inline: 0.5rem;
   font-family:
     "Inter",
     -apple-system,
@@ -43,73 +35,63 @@ body {
     "Apple Color Emoji",
     "Segoe UI Emoji",
     "Segoe UI Symbol";
+  color: var(--grey-600);
+  background: var(--background);
+  margin: 0;
+  padding: 0 0.5rem;
 }
 
-/* ────────────────────────────────────────────────────────────
-  Layout
-────────────────────────────────────────────────────────────── */
 main {
-  margin-inline: auto;
+  margin: auto;
   max-width: 40rem;
-  padding-block: 2rem;
-}
-
-/* ────────────────────────────────────────────────────────────
-  Typography
-────────────────────────────────────────────────────────────── */
-h1,
-h2 {
-  font-weight: 600;
-  margin-block-end: 0.5rem;
-  padding-block-end: 0.5rem;
+  padding: 2rem;
 }
 
 h1 {
   font-size: 2rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  padding: 0 0 0.5rem;
 }
 
 h2 {
   font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  padding: 0 0 0.5rem;
 }
 
-p,
-li {
-  color: var(--color-grey-400);
-  font-size: 1rem;
-  line-height: 1.5;
-  opacity: 0.8;
-  margin-block-end: 1rem;
-  padding-block-end: 1rem;
-}
-
-/* ────────────────────────────────────────────────────────────
-  Lists
-────────────────────────────────────────────────────────────── */
-li {
-  list-style: none;
-  margin-block: 1rem;
-}
-
-/* ────────────────────────────────────────────────────────────
-  Links
-────────────────────────────────────────────────────────────── */
 a {
-  color: var(--color-grey-400);
+  color: var(--grey-400);
   text-decoration: none;
-  transition: color 0.2s ease, font-weight 0.2s ease;
 }
 
 a:hover {
-  color: var(--color-grey-600);
+  color: var(--grey-600);
   font-weight: 600;
 }
 
 a:active {
-  color: var(--color-bg);
   font-weight: 900;
+  color: var(--background);
 }
 
 a:focus {
-  outline: 2px solid var(--color-grey-400);
+  outline: 2px solid var(--grey-400);
   outline-offset: 2px;
+}
+
+li {
+  list-style: none;
+  margin: 1rem 0;
+}
+
+p,
+li {
+  color: var(--grey-400);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0 0 1rem;
+  opacity: 0.8;
+  padding: 0 0 1rem;
 }

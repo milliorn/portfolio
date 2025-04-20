@@ -42,12 +42,12 @@ const head = {
     <meta name={head.meta.name} content={head.meta.content} />
     <title>{title}</title>
   </head>
-  <main>
-    <ThemeToggler />
-    <Navigation />
-    <slot />
-    <Footer />
-  </main>
-
-
+  <body>
+    <main>
+      <ThemeToggler />
+      <Navigation />
+      <slot />
+      <Footer />
+    </main>
+  </body>
 </html>
