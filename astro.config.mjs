@@ -4,9 +4,16 @@ import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://milliorn-portfolio.netlify.app/", // ← helpful for meta helpers, RSS, SEO
+  site: "https://milliorn-portfolio.netlify.app", // ← helpful for meta helpers, RSS, SEO
   output: "server",
-  adapter: netlify(),
+  adapter: netlify({
+    // https://docs.astro.build/en/guides/integrations-guide/netlify/#caching-pages
+    cacheOnDemandPages: true
+  }),
+  // https://docs.astro.build/en/guides/integrations-guide/netlify/#netlify-image-cdn-support
+  image: {
+    domains: ['https://picsum.photos']
+  },
   integrations: [
     sitemap({
       i18n: {
