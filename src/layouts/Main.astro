@@ -43,11 +43,11 @@ const head = {
     <title>{title}</title>
   </head>
   <body>
+    <ThemeToggler />
+    <Navigation />
     <main>
-      <ThemeToggler />
-      <Navigation />
       <slot />
-      <Footer />
     </main>
+    <Footer />
   </body>
 </html>
