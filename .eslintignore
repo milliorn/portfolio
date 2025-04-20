@@ -1,0 +1,14 @@
+# Ignore node and build artifacts
+node_modules/
+dist/
+.cache/
+.netlify/
+public/
+
+# Ignore Astro-generated PWA files
+sw.js
+workbox-*.js
+manifest.webmanifest
+
+# Ignore lockfiles (optional for performance)
+package-lock.json
