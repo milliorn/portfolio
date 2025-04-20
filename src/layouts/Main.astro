@@ -1,29 +1,45 @@
 ---
-import Footer from "../components/Footer.astro"
-import Navigation from "../components/Navigation.astro"
-import ThemeToggler from "../components/ThemeToggler.astro"
-import "../styles/global.css"
+// css
+import "../styles/global.css";
+
+// components
+import Footer from "../components/Footer.astro";
+import Navigation from "../components/Navigation.astro";
+import ThemeToggler from "../components/ThemeToggler.astro";
+
+// types
 import type { MainProps } from "./types";
 
-const { title } = Astro.props as MainProps
+// props
+const props = Astro.props as MainProps;
+const { title = "Scott Milliorn Portfolio" } = props;
+
+// vars
+const head = {
+  links: {
+    fonts:
+      "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap",
+    icon: "/nintendo2.svg",
+    sitemap: "/sitemap-index.xml",
+  },
+  meta: {
+    content: "My Professional Portfolio, Scott Milliorn",
+    name: "description",
+  },
+};
 ---
 
 <html lang="en">
   <head>
-    <link rel="icon" type="image/svg+xml" href="/nintendo2.svg" />
+    <link href={head.links.fonts} rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href={head.links.icon} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="sitemap" href={head.links.sitemap} />
     <meta charset="utf-8" />
-    <meta
-      name="description"
-      content="My Professional Portfolio, Scott Milliorn"
-    />
     <meta name="generator" content={Astro.generator} />
     <meta name="viewport" content="width=device-width" />
+    <meta name={head.meta.name} content={head.meta.content} />
     <title>{title}</title>
   </head>
   <main>
