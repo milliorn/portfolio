@@ -97,7 +97,7 @@ const blogs = await Astro.glob<{
   }
 
   .profile__picture {
-    border-radius: 50%; /* rounds the corners of the element */
+    border-radius: calc(infinity * 1px);
     height: 6rem;
     margin: 0 0 1rem 0;
     width: 6rem;
@@ -149,7 +149,7 @@ const blogs = await Astro.glob<{
   }
 
   .profile__picture-container {
-    border-radius: 9999px;
+    border-radius: calc(infinity * 1px);
     height: 6rem; /* Fix for aspect ratio */
     margin: 0 0 1rem 0;
     overflow: hidden;
@@ -169,15 +169,11 @@ const blogs = await Astro.glob<{
     }
 
     .profile__picture-container {
-      border-radius: 9999px;
-      height: 128px; /* Fix for aspect ratio */
-      width: 128px; /* Fix for aspect ratio */
-
-      padding: 0 2rem 0 0;
+      border-radius: calc(infinity * 1px);
     }
     .profile__details {
       flex: 1 1 50%;
-      text-align: left;
+      text-align: center;
     }
 
     .profile__picture {
