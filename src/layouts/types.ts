@@ -7,5 +7,5 @@ export type BlogProps = MarkdownLayoutProps<{
 }>;
 
 export type MainProps = {
-  title: string
-}
+  title: string;
+};
