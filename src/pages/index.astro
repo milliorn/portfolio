@@ -6,13 +6,21 @@ const developerLocation = "California, USA";
 const developerName = "Scott Milliorn";
 const developerTitle = "Software Engineer";
 const pageTitle = `${developerName} Portfolio`;
-const profilePicture = "https://picsum.photos/200/300.webp"; // random image
+const profilePicture = "https://picsum.photos/300.webp"; // random image
 
-const blogs = await Astro.glob<{
-  poster: string;
-  subtitle: string;
-  title: string;
-}>("../pages/blogs/*.md");
+// https://vite.dev/guide/features.html#glob-import
+const modules = import.meta.glob<{
+  frontmatter: {
+    poster: string;
+    subtitle: string;
+    title: string;
+  };
+}>("../pages/blogs/*.md", { eager: true });
+
+const blogs = Object.entries(modules).map(([url, mod]) => ({
+  url: url.replace("../pages", ""), // Converts to `/blogs/filename.md`
+  frontmatter: mod.frontmatter,
+}));
 ---
 
 <Main title={pageTitle}>
@@ -97,7 +105,8 @@ const blogs = await Astro.glob<{
   }
 
   .profile__picture {
-    border-radius: calc(infinity * 1px);
+    border-radius: 50%;
+
     height: 6rem;
     margin: 0 0 1rem 0;
     width: 6rem;
@@ -149,7 +158,8 @@ const blogs = await Astro.glob<{
   }
 
   .profile__picture-container {
-    border-radius: calc(infinity * 1px);
+    border-radius: 50%;
+
     height: 6rem; /* Fix for aspect ratio */
     margin: 0 0 1rem 0;
     overflow: hidden;
@@ -169,7 +179,7 @@ const blogs = await Astro.glob<{
     }
 
     .profile__picture-container {
-      border-radius: calc(infinity * 1px);
+      border-radius: 50%;
     }
     .profile__details {
       flex: 1 1 50%;
