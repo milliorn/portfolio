@@ -1,0 +1,124 @@
+.profile {
+  align-items: flex-start;
+  /* aligns children on the cross axis */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* defines the alignment along the main axis */
+  margin: 0 auto;
+  /* centers the element horizontally */
+  max-width: 40rem;
+  padding: 1rem 0 3rem 0;
+}
+
+.profile__details {
+  flex: 1 1 100%;
+  /* shorthand for flex-grow, flex-shrink, and flex-basis */
+  text-align: center;
+  /* defines the alignment along the inline axis */
+}
+
+.profile__details>h1 {
+  margin-top: 0;
+  /* removes the top margin */
+}
+
+.profile__picture {
+  border-radius: 50%;
+
+  height: 6rem;
+  margin: 0 0 1rem 0;
+  width: 6rem;
+}
+
+.featured-blogs {
+  margin: 0 auto;
+  /* centers the element horizontally */
+  max-width: 40rem;
+  padding: 3rem 0 0 0;
+}
+
+.featured-blogs__title {
+  color: var(--grey-900);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.featured-blogs__description {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: -1.2rem;
+}
+
+.blogs {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0 auto;
+  max-width: 40rem;
+  padding: 0 0 0 1rem;
+}
+
+.blogs__list {
+  border-bottom: 0.125rem solid var(--grey-200);
+  border-color: var(--grey-200);
+  list-style: none;
+}
+
+.blog__link {
+  color: var(--grey-200);
+  display: block;
+  height: 100%;
+  opacity: 1;
+  padding: 1rem 0;
+  text-decoration: none;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.blog__link:hover {
+  opacity: 0.7;
+}
+
+.profile__picture-container {
+  border-radius: 50%;
+
+  height: 6rem;
+  /* Fix for aspect ratio */
+  margin: 0 0 1rem 0;
+  overflow: hidden;
+  width: 6rem;
+  /* Fix for aspect ratio */
+}
+
+.profile__picture {
+  display: block;
+  height: 100%;
+  /* Let the height adjust proportionally */
+  object-fit: cover;
+  /* Maintain aspect ratio and cover the container */
+  width: 100%;
+  /* Ensure the image takes up the container's width */
+}
+
+@media (min-width: 768px) {
+  .profile {
+    padding: 3rem 0 0 0;
+  }
+
+  .profile__picture-container {
+    border-radius: 50%;
+  }
+
+  .profile__details {
+    flex: 1 1 50%;
+    text-align: center;
+  }
+
+  .profile__picture {
+    margin: 0 2rem 1rem 0;
+  }
+
+  .featured-blogs {
+    padding: 3rem 0 0 0;
+  }
+}
