@@ -6,7 +6,7 @@ import Cards from "../components/Card/Cards.astro";
 // layout
 import Main from "../layouts/Main.astro";
 // types
-import type { BlogFrontMatter } from "./props/types";
+import type { BlogFrontMatter } from "../props/Pages.types";
 
 // https://vite.dev/guide/features.html#glob-import
 const modules = import.meta.glob<{ frontmatter: BlogFrontMatter }>(

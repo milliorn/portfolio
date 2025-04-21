@@ -1,6 +1,6 @@
 ---
 import Main from "./Main.astro";
-import type { BlogProps } from "./types";
+import type { BlogProps } from "../props/Layouts.types";
 
 const { frontmatter } = Astro.props as BlogProps;
 const { title, poster, subtitle } = frontmatter;
