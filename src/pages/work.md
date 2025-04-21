@@ -1,6 +1,6 @@
 ---
 layout: ../layouts/Blog.astro
-poster: "https://source.unsplash.com/random?programming"
+poster: "https://picsum.photos/1080.webp"
 subtitle: "An overview of my career:"
 title: "Work History"
 ---
