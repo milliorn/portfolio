@@ -26,10 +26,11 @@
 
 .profile__picture {
   border-radius: 50%;
-
-  height: 6rem;
-  margin: 0 0 1rem 0;
-  width: 6rem;
+  margin: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .featured-blogs {
@@ -43,6 +44,7 @@
   color: var(--grey-900);
   font-size: 1.5rem;
   font-weight: 700;
+  line-height: 1.3;
 }
 
 .featured-blogs__description {
@@ -61,7 +63,6 @@
 
 .blogs__list {
   border-bottom: 0.125rem solid var(--grey-200);
-  border-color: var(--grey-200);
   list-style: none;
 }
 
@@ -90,23 +91,10 @@
   /* Fix for aspect ratio */
 }
 
-.profile__picture {
-  display: block;
-  height: 100%;
-  /* Let the height adjust proportionally */
-  object-fit: cover;
-  /* Maintain aspect ratio and cover the container */
-  width: 100%;
-  /* Ensure the image takes up the container's width */
-}
 
 @media (min-width: 768px) {
   .profile {
     padding: 3rem 0 0 0;
-  }
-
-  .profile__picture-container {
-    border-radius: 50%;
   }
 
   .profile__details {
