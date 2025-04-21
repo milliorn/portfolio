@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
   --background: white;
   --grey-200: #222222;
@@ -81,11 +87,6 @@ a:focus {
   outline-offset: 2px;
 }
 
-li {
-  list-style: none;
-  margin: 1rem 0;
-}
-
 p,
 li {
   color: var(--grey-400);
@@ -94,4 +95,5 @@ li {
   margin: 0 0 1rem;
   opacity: 0.8;
   padding: 0 0 1rem;
+  list-style: none; /* ← just move this here */
 }

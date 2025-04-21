@@ -5,6 +5,6 @@ export type CardProps = {
   to: string;
 };
 
-export type CardsProps = {
+export type CardListProps = {
   cards: CardProps[];
 };

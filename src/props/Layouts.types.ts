@@ -1,10 +1,7 @@
 import type { MarkdownLayoutProps } from "astro";
+import type { BlogFrontMatter } from "./Pages.types";
 
-export type BlogProps = MarkdownLayoutProps<{
-  poster: string;
-  subtitle: string;
-  title: string;
-}>;
+export type BlogProps = MarkdownLayoutProps<BlogFrontMatter>;
 
 export type MainProps = {
   title: string;

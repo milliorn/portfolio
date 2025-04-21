@@ -82,13 +82,10 @@
 
 .profile__picture-container {
   border-radius: 50%;
-
   height: 6rem;
-  /* Fix for aspect ratio */
   margin: 0 0 1rem 0;
   overflow: hidden;
   width: 6rem;
-  /* Fix for aspect ratio */
 }
 
 
