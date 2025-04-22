@@ -53,3 +53,15 @@
     flex-direction: row;
   }
 }
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .cards {
+    flex-direction: row;
+  }
+}

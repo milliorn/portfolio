@@ -1,8 +1,6 @@
 ---
-// Import types
-import type { CardProps } from "../../props/Card.types";
-// css
-import "../../styles/card.astro.css";
+import type { CardProps } from "./types";
+import "../Card/card.css";
 
 // Props
 const { gradientFrom, gradientTo, title, to } = Astro.props as CardProps;
