@@ -1,6 +1,9 @@
 ---
+import type { MarkdownLayoutProps } from "astro";
+import type { BlogFrontMatter } from "../pages/types";
 import Main from "./Main.astro";
-import type { BlogProps } from "../props/Layouts.types";
+
+type BlogProps = MarkdownLayoutProps<BlogFrontMatter>;
 
 const { frontmatter } = Astro.props as BlogProps;
 const { title, poster, subtitle } = frontmatter;
