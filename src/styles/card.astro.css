@@ -41,3 +41,15 @@
     0 0 0 1px var(--grey-300),
     0 4px 8px 0 var(--grey-300);
 }
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .cards {
+    flex-direction: row;
+  }
+}

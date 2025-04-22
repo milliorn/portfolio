@@ -19,11 +19,11 @@ const blogs = Object.entries(modules)
     url: url.replace("../pages", "").replace(/\.md$/, ""),
     frontmatter: mod.frontmatter,
   }))
-  .sort((a, b) =>
-    new Date(b.frontmatter.date).getTime() -
-    new Date(a.frontmatter.date).getTime()
+  .sort(
+    (a, b) =>
+      new Date(b.frontmatter.date).getTime() -
+      new Date(a.frontmatter.date).getTime()
   );
-
 
 const profilePicture = "https://picsum.photos/1080.webp"; // random image
 
