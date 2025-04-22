@@ -1,9 +1,9 @@
 ---
-import Links from "../components/Links.astro";
+import Links from "../components/Links/Links.astro";
+import { site } from "../config";
 import Main from "../layouts/Main.astro";
 
-const developerName = "Scott Milliorn";
-const pageTitle = `About - ${developerName} Portfolio`;
+const pageTitle = `About - ${site.owner} Portfolio`;
 ---
 
 <Main title={pageTitle}>

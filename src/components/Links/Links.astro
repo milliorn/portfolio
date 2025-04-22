@@ -1,0 +1,23 @@
+---
+import { socialLinks } from "./data";
+import "../Links/styles.css";
+---
+
+<nav class="links" aria-label="Social Links">
+  <ul>
+    {
+      socialLinks.map((e, i) => (
+        <li id={`${i}+${e.text}`}>
+          <a
+            href={e.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={e.text}
+          >
+            {e.text}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
