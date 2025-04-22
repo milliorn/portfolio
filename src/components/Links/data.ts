@@ -1,16 +1,17 @@
 import type { SocialLink } from "./types";
+import { url } from "../../config";
 
 export const socialLinks: SocialLink[] = [
   {
-    href: "https://github.com/milliorn",
+    href: url.github,
     text: "Github",
   },
   {
-    href: "https://www.linkedin.com/in/scott-milliorn/",
+    href: url.linkedin,
     text: "Linkedin",
   },
   {
-    href: "https://twitter.com/scottmilliorn",
+    href: url.twitter,
     text: "Twitter",
   },
 ];
