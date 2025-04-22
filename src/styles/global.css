@@ -97,3 +97,13 @@ li {
   padding: 0 0 1rem;
   list-style: none; /* ← just move this here */
 }
+
+.container {
+  margin: 0 auto;
+  max-width: 40rem;
+  padding: 0 1rem;
+}
+
+.text-center {
+  text-align: center;
+}

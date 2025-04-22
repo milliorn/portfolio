@@ -1,15 +1,11 @@
 ---
-const date = new Date().getFullYear();
-const owner = "Scott Milliorn";
+import { site } from "../config";
 ---
 
 <footer aria-label="Site Footer">
   <div class="container text-center">
-    <p>
-      &copy; {date}
-      {owner}.
-    </p>
-    <p>All rights reserved.</p>
+    <p>&copy; {site.year} {site.owner}</p>
+    <p>All rights reserved</p>
   </div>
 </footer>
 
