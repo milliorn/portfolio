@@ -1,18 +1,14 @@
 ---
-// css
-import "../styles/global.css";
-
-// components
 import Footer from "../components/Footer/Footer.astro";
 import Navigation from "../components/Navigation/Navigation.astro";
 import ThemeToggler from "../components/ThemeToggler.astro";
-
-// types
+import { site } from "../config";
+import "../styles/global.css";
 import type { MainProps } from "./types";
 
 // props
 const props = Astro.props as MainProps;
-const { title = "Scott Milliorn Portfolio" } = props;
+const { title = `${site.owner} Portfolio` } = props;
 
 // vars
 const head = {

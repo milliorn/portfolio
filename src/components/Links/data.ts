@@ -1,5 +1,5 @@
-import type { SocialLink } from "./types";
 import { url } from "../../config";
+import type { SocialLink } from "./types";
 
 export const socialLinks: SocialLink[] = [
   {
