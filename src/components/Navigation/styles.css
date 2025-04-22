@@ -1,0 +1,66 @@
+nav {
+  margin-top: 5rem;
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* Center the navigation items horizontally */
+  gap: 0.75rem;
+  /* Add some space around navigation items */
+  text-align: center;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* Center the navigation items horizontally */
+  margin: 0;
+  /* Remove default margin */
+  padding: 0;
+  /* Remove default padding */
+  width: 100%;
+  /* Set full width */
+}
+
+nav li {
+  font-size: 1.25rem;
+  list-style: none;
+  /* Remove list bullets */
+  opacity: 0.8;
+  /* Make navigation items slightly transparent */
+  padding: 0;
+  /* Adjust padding for better spacing on mobile */
+}
+
+a {
+  border-radius: 0.25rem;
+  /* Rounded corners */
+  color: var(--grey-600);
+  /* Text color */
+  padding: 0.5rem 1rem;
+  /* Adjust padding for better spacing on mobile */
+  text-decoration: none;
+  /* Remove underline */
+  text-transform: capitalize;
+  transition:
+    background-color 0.2s ease-in-out,
+    color 0.2s ease-in-out;
+
+}
+
+a.active {
+  background-color: var(--grey-200);
+  /* Darken background on active */
+  color: var(--background);
+  /* Darken text on active */
+}
+
+a:hover {
+  background-color: var(--grey-100);
+  /* Darken background on hover */
+  color: var(--grey-800);
+  /* Darken text on hover */
+}
