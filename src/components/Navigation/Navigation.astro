@@ -8,7 +8,14 @@ import "./styles.css";
     {
       navLinks.map((link) => (
         <li>
-          <a href={link.href}>{link.label}</a>
+          <a
+            href={link.href}
+            aria-label={link.ariaLabel ?? link.label}
+            target={link.external ? "_blank" : undefined}
+            rel={link.external ? "noopener noreferrer" : undefined}
+          >
+            {link.label}
+          </a>
         </li>
       ))
     }
