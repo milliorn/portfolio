@@ -4,7 +4,7 @@ import type { CardProps } from "../../props/Card.types";
 const { gradientFrom, gradientTo, title, to } = Astro.props as CardProps;
 ---
 
-<a href={to} class="card">
+<a href={to} class="card" aria-label={`Visit ${title}`}>
   <!-- Render the link -->
   <div class="card__inner">
     <!-- Inner container for background color -->
@@ -58,5 +58,9 @@ const { gradientFrom, gradientTo, title, to } = Astro.props as CardProps;
     font-size: 1.2rem;
     margin: auto 0 0 auto;
     padding-top: 2rem;
+  }
+
+  .card:hover .card__inner {
+    transform: scale(0.95);
   }
 </style>
