@@ -1,7 +1,7 @@
 ---
 import Footer from "../components/Footer/Footer.astro";
 import Navigation from "../components/Navigation/Navigation.astro";
-import ThemeToggler from "../components/ThemeToggler.astro";
+import ThemeToggler from "../components/ThemeToggler/ThemeToggler.astro";
 import { site } from "../config";
 import "../styles/global.css";
 import type { MainProps } from "./types";
@@ -37,6 +37,36 @@ const head = {
     <meta name="viewport" content="width=device-width" />
     <meta name={head.meta.name} content={head.meta.content} />
     <title>{title}</title>
+
+    <script is:inline type="module">
+      const root = document.documentElement;
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+      const savedTheme = localStorage.getItem("theme");
+
+      // If no saved theme, set it based on system preference
+      if (!savedTheme) {
+        localStorage.setItem("theme", prefersDark ? "dark" : "light");
+      }
+
+      // Apply the saved theme
+      if (localStorage.getItem("theme") === "dark") {
+        root.classList.add("dark");
+      } else {
+        root.classList.remove("dark");
+      }
+
+      // Update theme if system preference changes — only when user hasn't overridden it
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", (e) => {
+          const hasUserPreference = localStorage.getItem("theme");
+          if (!hasUserPreference) {
+            root.classList.toggle("dark", e.matches);
+          }
+        });
+    </script>
   </head>
   <body>
     <ThemeToggler />

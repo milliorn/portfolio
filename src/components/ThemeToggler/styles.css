@@ -1,0 +1,36 @@
+button {
+  background: var(--background); /* Use the background color variable */
+  border-radius: 0.75rem; /* Round the corners of the button */
+  border: 0; /* Remove the border */
+  cursor: pointer;
+  padding: 0.375rem 0.625rem; /* Add some padding to the button */
+  position: absolute; /* Position the ThemeToggler component */
+  right: 1.5rem; /* Adjust the horizontal position as needed */
+  top: 1.5rem; /* Adjust the vertical position as needed */
+  transition: all 0.2s ease-in-out; /* Add a transition effect to all properties */
+}
+
+button:hover {
+  /* Make the button smaller (scale down) when hovered */
+  transform: scale(0.9);
+}
+
+button:active {
+  /** Return the button to its standard size when active */
+  transform: scale(1);
+}
+
+.sun {
+  /* Show the sun icon by default (for dark theme) */
+  fill: #f1c40f;
+}
+
+:global(.light) .sun {
+  /* Hide the sun icon when the light theme is active */
+  fill: transparent;
+}
+
+:global(.light) .moon {
+  /* Show the moon icon when the light theme is active */
+  fill: someColor; /* Replace 'someColor' with the color you want for the moon icon */
+}
