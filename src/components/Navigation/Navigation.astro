@@ -16,7 +16,7 @@ import "./styles.css";
     <span class="bar"></span>
   </button>
 
-  <ul>
+  <ul id="main-nav">
     {
       navLinks.map((link) => (
         <li>
@@ -34,43 +34,48 @@ import "./styles.css";
   </ul>
 </nav>
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const { pathname } = window.location;
-    const activeNavigationElement = document.querySelector(
-      `nav a[href="${pathname}"]`
-    );
-    if (activeNavigationElement) {
-      activeNavigationElement.classList.add("active");
-      activeNavigationElement.setAttribute("aria-current", "page");
-    }
-  });
-</script>
-
 <script is:inline>
   document.addEventListener("DOMContentLoaded", () => {
+    const { pathname } = window.location;
+    const navMenu = document.querySelector("#main-nav");
     const toggle = document.querySelector(".nav-toggle");
-    const navMenu = document.querySelector("nav ul");
 
-    const toggleMenu = () => {
+    // Highlight active nav item
+    const activeLink = navMenu?.querySelector(`a[href="${pathname}"]`);
+    if (activeLink) {
+      activeLink.classList.add("active");
+      activeLink.setAttribute("aria-current", "page");
+    }
+
+    // Toggle menu open/close
+    toggle?.addEventListener("click", () => {
       const isOpen = toggle.classList.toggle("open");
-      navMenu?.classList.toggle("open");
       toggle.setAttribute("aria-expanded", String(isOpen));
-    };
 
-    toggle?.addEventListener("click", toggleMenu);
-    toggle?.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        toggleMenu();
+      if (isOpen) {
+        navMenu?.classList.remove("closing");
+        navMenu?.classList.add("open");
+      } else {
+        navMenu?.classList.add("closing");
+        navMenu?.classList.remove("open");
+
+        setTimeout(() => {
+          navMenu?.classList.remove("closing");
+        }, 600); // Match CSS transition
       }
     });
 
+    // Close menu on nav link click (mobile)
     navMenu?.querySelectorAll("a").forEach((link) =>
       link.addEventListener("click", () => {
         toggle.classList.remove("open");
-        navMenu.classList.remove("open");
         toggle.setAttribute("aria-expanded", "false");
+        navMenu?.classList.add("closing");
+        navMenu?.classList.remove("open");
+
+        setTimeout(() => {
+          navMenu?.classList.remove("closing");
+        }, 600);
       })
     );
   });
