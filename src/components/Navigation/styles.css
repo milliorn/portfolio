@@ -1,65 +1,168 @@
 nav {
-  margin-top: 5rem;
+  padding-top: 4rem;
 }
 
 nav ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  /* Center the navigation items horizontally */
-  gap: 0.75rem;
-  /* Add some space around navigation items */
+  gap: 0.125rem;
   text-align: center;
-}
-
-ul {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  /* Center the navigation items horizontally */
   margin: 0;
-  /* Remove default margin */
   padding: 0;
-  /* Remove default padding */
   width: 100%;
-  /* Set full width */
 }
 
 nav li {
   font-size: 1.25rem;
   list-style: none;
-  /* Remove list bullets */
   opacity: 0.8;
-  /* Make navigation items slightly transparent */
   padding: 0;
-  /* Adjust padding for better spacing on mobile */
 }
 
 a {
   border-radius: 0.25rem;
-  /* Rounded corners */
   color: var(--grey-600);
-  /* Text color */
   padding: 0.5rem 1rem;
-  /* Adjust padding for better spacing on mobile */
   text-decoration: none;
-  /* Remove underline */
   text-transform: capitalize;
-  transition:
-    background-color 0.2s ease-in-out,
-    color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
 a.active {
   background-color: var(--grey-200);
-  /* Darken background on active */
-  color: var(--background);
-  /* Darken text on active */
+  color: var(--grey-900);
 }
 
 a:hover {
   background-color: var(--grey-100);
-  /* Darken background on hover */
   color: var(--grey-800);
-  /* Darken text on hover */
+}
+
+/* Hamburger toggle */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  z-index: 1000;
+}
+
+.nav-toggle .bar {
+  width: 100%;
+  height: 0.2rem;
+  background-color: var(--grey-600);
+  transition: all 0.3s ease-in-out;
+  border-radius: 2px;
+}
+
+.nav-toggle.open .bar:nth-child(1) {
+  transform: translateY(4px) rotate(45deg);
+}
+
+.nav-toggle.open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.open .bar:nth-child(3) {
+  transform: translateY(-16px) rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  nav ul {
+    flex-direction: column;
+    position: absolute;
+    top: 4rem;
+    left: 0;
+    right: 0;
+    background-color: var(--background);
+    border-top: 1px solid var(--grey-200);
+    border-bottom: 1px solid var(--grey-200);
+    backdrop-filter: blur(8px);
+    background-image: linear-gradient(to bottom,
+        rgba(255, 255, 255, 0.8),
+        rgba(255, 255, 255, 0.95));
+
+    text-align: center;
+    padding: 1rem 0;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition:
+      opacity 0.45s cubic-bezier(0.23, 1, 0.32, 1),
+      transform 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  html.dark nav ul {
+    background-image: linear-gradient(to bottom,
+        rgba(0, 0, 0, 0.85),
+        rgba(0, 0, 0, 0.95));
+  }
+
+  html.dark a:hover {
+    background-color: var(--grey-200);
+    color: var(--background);
+  }
+
+  html.dark a.active {
+    color: var(--background);
+  }
+
+  nav ul:not(.open) li {
+    transition-delay: 0s !important;
+  }
+
+  nav ul.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  nav ul li {
+    opacity: 0;
+    transform: translateY(-5px);
+    transition-delay: 0s;
+    transition:
+      opacity 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+      transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  nav ul.open li {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  nav ul.open li:nth-child(1) {
+    transition-delay: 0.05s;
+  }
+
+  nav ul.open li:nth-child(2) {
+    transition-delay: 0.1s;
+  }
+
+  nav ul.open li:nth-child(3) {
+    transition-delay: 0.15s;
+  }
+
+  nav ul.open li:nth-child(4) {
+    transition-delay: 0.2s;
+  }
+
+  nav ul.open li:nth-child(5) {
+    transition-delay: 0.25s;
+  }
 }

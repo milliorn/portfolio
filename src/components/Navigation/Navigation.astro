@@ -4,6 +4,18 @@ import "./styles.css";
 ---
 
 <nav aria-label="Main Navigation">
+  <button
+    class="nav-toggle"
+    aria-label="Toggle navigation"
+    aria-expanded="false"
+    aria-controls="main-nav"
+    tabindex="0"
+  >
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
+
   <ul>
     {
       navLinks.map((link) => (
@@ -32,5 +44,34 @@ import "./styles.css";
       activeNavigationElement.classList.add("active");
       activeNavigationElement.setAttribute("aria-current", "page");
     }
+  });
+</script>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.querySelector(".nav-toggle");
+    const navMenu = document.querySelector("nav ul");
+
+    const toggleMenu = () => {
+      const isOpen = toggle.classList.toggle("open");
+      navMenu?.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", String(isOpen));
+    };
+
+    toggle?.addEventListener("click", toggleMenu);
+    toggle?.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        toggleMenu();
+      }
+    });
+
+    navMenu?.querySelectorAll("a").forEach((link) =>
+      link.addEventListener("click", () => {
+        toggle.classList.remove("open");
+        navMenu.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+      })
+    );
   });
 </script>
