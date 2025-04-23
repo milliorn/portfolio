@@ -38,6 +38,11 @@ const head = {
     <meta name={head.meta.name} content={head.meta.content} />
     <title>{title}</title>
 
+    <!-- This class will let CSS know that JS is available — and we can trust it to control visibility. -->
+    <script is:inline>
+      document.documentElement.classList.add("js");
+    </script>
+
     <script is:inline type="module">
       const root = document.documentElement;
       const prefersDark = window.matchMedia(
