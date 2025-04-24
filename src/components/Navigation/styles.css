@@ -85,7 +85,7 @@ a:hover {
   background: none;
   border: 1px solid white;
   padding: 0.5rem;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   cursor: pointer;
   transition: border-color 0.2s ease-in-out;
 }
