@@ -79,7 +79,6 @@
 
 .profile__picture-container {
   border: 1px solid white;
-  /* diagnostic */
   border-radius: 50%;
   aspect-ratio: 1 / 1;
   width: 12rem;
