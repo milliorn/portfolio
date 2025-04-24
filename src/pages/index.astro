@@ -42,7 +42,13 @@ const text = {
 <Main title={text.title}>
   <div class="profile">
     <div class="profile__picture-container">
-      <img src={url.poster} alt="profile image" class="profile__picture" />
+      <img
+        src={url.poster}
+        alt="profile image"
+        class="profile__picture"
+        width="1080"
+        height="1080"
+      />
     </div>
     <div class="profile__details">
       <h1>{text.developer.name}</h1>

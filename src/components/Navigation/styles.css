@@ -225,3 +225,9 @@ html.dark a:hover {
 html.dark a.active {
   color: var(--background);
 }
+
+/* Light mode override for toggle buttons */
+html:not(.dark) .nav-toggle,
+html:not(.dark) #theme-toggle {
+  border-color: black;
+}
