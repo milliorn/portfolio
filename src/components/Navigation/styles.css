@@ -7,7 +7,7 @@ nav ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.125rem;
+  gap: 1rem;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -27,7 +27,9 @@ a {
   padding: 0.5rem 1rem;
   text-decoration: none;
   text-transform: capitalize;
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  transition:
+    background-color 0.2s ease-in-out,
+    color 0.2s ease-in-out;
 }
 
 a.active {
@@ -41,6 +43,31 @@ a:hover {
 }
 
 /* ========== Hamburger Button Styles ========== */
+/* Align nav toggle left and theme toggler right */
+.nav-bar {
+  position: absolute;
+  top: 1.5rem;
+  left: 0;
+  right: 0;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
+
+.nav-controls {
+  position: absolute;
+  top: 1.5rem;
+  left: 0;
+  right: 0;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+}
+
 .nav-toggle {
   display: none;
   flex-direction: column;
@@ -51,10 +78,6 @@ a:hover {
   border: none;
   cursor: pointer;
   padding: 0;
-  position: absolute;
-  top: 1.5rem;
-  left: 1.5rem;
-  z-index: 1000;
 }
 
 .nav-toggle .bar {
@@ -79,7 +102,6 @@ a:hover {
 
 /* ========== Accessibility: Reduced Motion ========== */
 @media (prefers-reduced-motion: reduce) {
-
   nav ul,
   nav ul li {
     transition: none !important;
@@ -90,6 +112,10 @@ a:hover {
 @media (max-width: 768px) {
   .nav-toggle {
     display: flex;
+  }
+
+  .nav-controls {
+    justify-content: space-between;
   }
 
   /* Prevent flicker during viewport switch */
@@ -124,9 +150,11 @@ a:hover {
     border-top: 1px solid var(--grey-200);
     border-bottom: 1px solid var(--grey-200);
     backdrop-filter: blur(8px);
-    background-image: linear-gradient(to bottom,
-        rgba(255, 255, 255, 0.8),
-        rgba(255, 255, 255, 0.95));
+    background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0.95)
+    );
     text-align: center;
     padding: 1rem 0;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
@@ -174,9 +202,11 @@ a:hover {
 
 /* ========== Dark Mode Styles ========== */
 html.dark nav ul {
-  background-image: linear-gradient(to bottom,
-      rgba(0, 0, 0, 0.85),
-      rgba(0, 0, 0, 0.95));
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.85),
+    rgba(0, 0, 0, 0.95)
+  );
 }
 
 html.dark a:hover {

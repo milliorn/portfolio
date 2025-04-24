@@ -1,20 +1,24 @@
 ---
 import { navLinks } from "./data";
+import ThemeToggler from "../ThemeToggler/ThemeToggler.astro";
 import "./styles.css";
 ---
 
 <nav aria-label="Main Navigation">
-  <button
-    class="nav-toggle"
-    aria-label="Toggle navigation"
-    aria-expanded="false"
-    aria-controls="main-nav"
-    tabindex="0"
-  >
-    <span class="bar"></span>
-    <span class="bar"></span>
-    <span class="bar"></span>
-  </button>
+  <div class="nav-controls">
+    <button
+      class="nav-toggle"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="main-nav"
+      tabindex="0"
+    >
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <ThemeToggler />
+  </div>
 
   <ul id="main-nav">
     {
@@ -40,14 +44,12 @@ import "./styles.css";
     const navMenu = document.querySelector("#main-nav");
     const toggle = document.querySelector(".nav-toggle");
 
-    // Highlight active nav item
     const activeLink = navMenu?.querySelector(`a[href="${pathname}"]`);
     if (activeLink) {
       activeLink.classList.add("active");
       activeLink.setAttribute("aria-current", "page");
     }
 
-    // Toggle menu open/close
     toggle?.addEventListener("click", () => {
       const isOpen = toggle.classList.toggle("open");
       toggle.setAttribute("aria-expanded", String(isOpen));
@@ -58,21 +60,18 @@ import "./styles.css";
       } else {
         navMenu?.classList.add("closing");
         navMenu?.classList.remove("open");
-
         setTimeout(() => {
           navMenu?.classList.remove("closing");
-        }, 600); // Match CSS transition
+        }, 600);
       }
     });
 
-    // Close menu on nav link click (mobile)
     navMenu?.querySelectorAll("a").forEach((link) =>
       link.addEventListener("click", () => {
         toggle.classList.remove("open");
         toggle.setAttribute("aria-expanded", "false");
         navMenu?.classList.add("closing");
         navMenu?.classList.remove("open");
-
         setTimeout(() => {
           navMenu?.classList.remove("closing");
         }, 600);
