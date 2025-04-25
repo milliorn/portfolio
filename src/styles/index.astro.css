@@ -19,7 +19,7 @@
   /* defines the alignment along the inline axis */
 }
 
-.profile__details>h1 {
+.profile__details > h1 {
   margin-top: 0;
   /* removes the top margin */
 }
