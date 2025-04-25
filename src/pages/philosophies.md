@@ -1,6 +1,6 @@
 ---
 layout: ../layouts/Blog.astro
-poster: "https://source.unsplash.com/random?philosophies"
+poster: "https://picsum.photos/1080.webp"
 subtitle: "These principles underpin every choice and step I take."
 title: "My Core Principles"
 ---

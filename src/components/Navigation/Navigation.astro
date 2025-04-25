@@ -1,0 +1,81 @@
+---
+import { navLinks } from "./data";
+import ThemeToggler from "../ThemeToggler/ThemeToggler.astro";
+import "./styles.css";
+---
+
+<nav aria-label="Main Navigation">
+  <div class="nav-controls">
+    <button
+      class="nav-toggle"
+      aria-label="Toggle navigation"
+      aria-expanded="false"
+      aria-controls="main-nav"
+      tabindex="0"
+    >
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <ThemeToggler />
+  </div>
+
+  <ul id="main-nav">
+    {
+      navLinks.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            aria-label={link.ariaLabel ?? link.label}
+            target={link.external ? "_blank" : undefined}
+            rel={link.external ? "noopener noreferrer" : undefined}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const { pathname } = window.location;
+    const navMenu = document.querySelector("#main-nav");
+    const toggle = document.querySelector(".nav-toggle");
+
+    const activeLink = navMenu?.querySelector(`a[href="${pathname}"]`);
+    if (activeLink) {
+      activeLink.classList.add("active");
+      activeLink.setAttribute("aria-current", "page");
+    }
+
+    toggle?.addEventListener("click", () => {
+      const isOpen = toggle.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", String(isOpen));
+
+      if (isOpen) {
+        navMenu?.classList.remove("closing");
+        navMenu?.classList.add("open");
+      } else {
+        navMenu?.classList.add("closing");
+        navMenu?.classList.remove("open");
+        setTimeout(() => {
+          navMenu?.classList.remove("closing");
+        }, 600);
+      }
+    });
+
+    navMenu?.querySelectorAll("a").forEach((link) =>
+      link.addEventListener("click", () => {
+        toggle.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+        navMenu?.classList.add("closing");
+        navMenu?.classList.remove("open");
+        setTimeout(() => {
+          navMenu?.classList.remove("closing");
+        }, 600);
+      })
+    );
+  });
+</script>

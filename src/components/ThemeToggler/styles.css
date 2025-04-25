@@ -1,0 +1,38 @@
+button {
+  align-items: center;
+  background: var(--background);
+  border-radius: 0.5rem;
+  border: 1px solid white;
+  cursor: pointer;
+  display: flex;
+  height: 3rem;
+  justify-content: center;
+  padding: 0.5rem;
+  transition: all 0.2s ease-in-out;
+  width: 3rem;
+}
+
+button:hover {
+  /* Make the button smaller (scale down) when hovered */
+  transform: scale(0.95);
+}
+
+button:active {
+  /** Return the button to its standard size when active */
+  transform: scale(1);
+}
+
+.sun {
+  /* Show the sun icon by default (for dark theme) */
+  fill: #f1c40f;
+}
+
+:global(.light) .sun {
+  /* Hide the sun icon when the light theme is active */
+  fill: transparent;
+}
+
+:global(.light) .moon {
+  /* Show the moon icon when the light theme is active */
+  fill: white; /* Adjust if you want a different moon color */
+}

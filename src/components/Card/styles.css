@@ -1,0 +1,66 @@
+.card {
+  --radius: 0.75rem;
+  aspect-ratio: 3/ 4;
+  /* Optional: Enforces stable shape */
+  background: linear-gradient(135deg, var(--gradientFrom), var(--gradientTo));
+  border-radius: var(--radius);
+  box-shadow:
+    0 0 0 1px var(--grey-200),
+    0 2px 4px 0 var(--grey-200);
+  display: block;
+  min-height: 12rem;
+  padding: 1rem;
+  text-decoration: none;
+  transition: none;
+}
+
+.card__inner {
+  align-items: center;
+  background: var(--background);
+  border-radius: var(--radius);
+  display: flex;
+  height: 100%;
+  gap: 1rem;
+  justify-content: space-between;
+  padding: 1rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.card__title {
+  color: var(--grey-900);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.625;
+  margin: 0;
+}
+
+.card__footer {
+  color: var(--grey-900);
+  font-size: 1.2rem;
+  margin-top: auto;
+  font-size: 1.25rem;
+}
+
+.card:hover .card__inner {
+  transform: scale(0.95);
+  transition: all 0.2s ease-in-out;
+
+  box-shadow:
+    0 0 0 1px var(--grey-300),
+    0 4px 8px 0 var(--grey-300);
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  min-height: 12rem;
+  /* not 1rem */
+}
+
+@media screen and (min-width: 768px) {
+  .cards {
+    flex-direction: row;
+  }
+}
