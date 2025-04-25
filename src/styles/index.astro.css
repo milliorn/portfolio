@@ -90,17 +90,24 @@
 }
 
 @media (min-width: 768px) {
+  .profile__picture-container {
+    flex: 1 1 50%;
+    display: flex;
+    justify-content: center;
+  }
+
   .profile {
     padding: 3rem 0 0 0;
+  }
+
+  .profile__picture {
+    margin: 0;
+    /* remove right margin on wider view */
   }
 
   .profile__details {
     flex: 1 1 50%;
     text-align: center;
-  }
-
-  .profile__picture {
-    margin: 0 2rem 1rem 0;
   }
 
   .featured-blogs {

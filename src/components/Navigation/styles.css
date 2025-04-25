@@ -39,7 +39,7 @@ a {
 
 a.active {
   background-color: var(--grey-200);
-  color: var(--grey-900);
+  color: var(--background);
 }
 
 a:hover {
