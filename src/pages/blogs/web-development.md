@@ -414,7 +414,9 @@ Now, let's make our calculator look good with some CSS. Add the following CSS to
     background-color: #000;
     border-radius: 0.375rem; /* 6px */
     border: 1px solid rgb(214 211 209);
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    box-shadow:
+      0 4px 6px -1px rgb(0 0 0 / 0.1),
+      0 2px 4px -2px rgb(0 0 0 / 0.1);
     padding: 0.625rem; /* 10px */
     width: 91.666667%;
 

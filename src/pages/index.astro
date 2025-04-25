@@ -1,33 +1,61 @@
 ---
-import Cards from "../components/Cards.astro";
+// css
+import "../styles/index.astro.css";
+import Cards from "../components/Card/Cards.astro";
 import Main from "../layouts/Main.astro";
+import type { BlogFrontMatter } from "./types";
+import { url } from "../config";
 
-const developerLocation = "California, USA";
-const developerName = "Scott Milliorn";
-const developerTitle = "Software Engineer";
-const pageTitle = `${developerName} Portfolio`;
-const profilePicture = "https://source.unsplash.com/random?scott"; // random image from unsplash
+// https://vite.dev/guide/features.html#glob-import
+const modules = import.meta.glob<{ frontmatter: BlogFrontMatter }>(
+  "../pages/blogs/*.md",
+  { eager: true }
+);
 
-const blogs = await Astro.glob<{
-  poster: string;
-  subtitle: string;
-  title: string;
-}>("../pages/blogs/*.md");
+const blogs = Object.entries(modules)
+  .map(([url, mod]) => ({
+    url: url.replace("../pages", "").replace(/\.md$/, ""),
+    frontmatter: mod.frontmatter,
+  }))
+  .sort(
+    (a, b) =>
+      new Date(b.frontmatter.date).getTime() -
+      new Date(a.frontmatter.date).getTime()
+  );
+
+const text = {
+  title: "Scott Milliorn Portfolio",
+  developer: {
+    location: "California, USA",
+    name: "Scott Milliorn",
+    title: "Software Engineer",
+    details:
+      "Highly skilled and innovative professional with expertise in designing, developing, and maintaining web applications and software solutions. Deep understanding of modern web technologies and frameworks.",
+  },
+  blogs: {
+    title: "Featured Blogs",
+    description: "Opinion articles crafted from my personal interests.",
+  },
+};
 ---
 
-<Main title={pageTitle}>
+<Main title={text.title}>
   <div class="profile">
     <div class="profile__picture-container">
-      <img src={profilePicture} alt="profile image" class="profile__picture" />
+      <img
+        src={url.poster}
+        alt="profile image"
+        class="profile__picture"
+        width="1080"
+        height="1080"
+      />
     </div>
     <div class="profile__details">
-      <h1>{developerName}</h1>
-      <h2>{developerTitle}</h2>
-      <h3>{developerLocation}</h3>
+      <h1>{text.developer.name}</h1>
+      <h2>{text.developer.title}</h2>
+      <h3>{text.developer.location}</h3>
       <p>
-        Highly skilled and innovative professional with expertise in designing,
-        developing, and maintaining web applications and software solutions.
-        Deep understanding of modern web technologies and frameworks.
+        {text.developer.details}
       </p>
     </div>
   </div>
@@ -56,13 +84,11 @@ const blogs = await Astro.glob<{
   />
 
   <div class="featured-blogs">
-    <h3 class="featured-blogs__title">Featured Blogs</h3>
-    <p class="featured-blogs__description">
-      Opinion articles crafted from my personal interests.
-    </p>
+    <h3 class="featured-blogs__title">{text.blogs.title}</h3>
+    <p class="featured-blogs__description">{text.blogs.description}</p>
   </div>
 
-  <ol>
+  <ul>
     {
       blogs.map((blog) => (
         <li class="blogs__list">
@@ -72,120 +98,5 @@ const blogs = await Astro.glob<{
         </li>
       ))
     }
-  </ol>
+  </ul>
 </Main>
-
-<style>
-  .profile {
-    align-items: flex-start; /* aligns children on the cross axis */
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center; /* defines the alignment along the main axis */
-    margin: 0 auto; /* centers the element horizontally */
-    max-width: 40rem;
-    padding: 1rem 0 3rem 0;
-  }
-
-  .profile__details {
-    flex: 1 1 100%; /* shorthand for flex-grow, flex-shrink, and flex-basis */
-    text-align: center; /* defines the alignment along the inline axis */
-  }
-
-  .profile__details > h1 {
-    margin-top: 0; /* removes the top margin */
-  }
-
-  .profile__picture {
-    border-radius: 50%; /* rounds the corners of the element */
-    height: 6rem;
-    margin: 0 0 1rem 0;
-    width: 6rem;
-  }
-
-  .featured-blogs {
-    margin: 0 auto; /* centers the element horizontally */
-    max-width: 40rem;
-    padding: 3rem 0 0 0;
-  }
-  .featured-blogs__title {
-    color: var(--grey-900);
-    font-size: 1.5rem;
-    font-weight: 700;
-  }
-
-  .featured-blogs__description {
-    font-size: 1rem;
-    font-weight: 500;
-    margin-top: -1.2rem;
-  }
-
-  .blogs {
-    font-size: 1rem;
-    font-weight: 500;
-    margin: 0 auto;
-    max-width: 40rem;
-    padding: 0 0 0 1rem;
-  }
-
-  .blogs__list {
-    border-bottom: 0.125rem solid var(--grey-200);
-    border-color: var(--grey-200);
-    list-style: none;
-  }
-
-  .blog__link {
-    color: var(--grey-200);
-    display: block;
-    height: 100%;
-    opacity: 1;
-    padding: 1rem 0;
-    text-decoration: none;
-    transition: opacity 0.2s ease-in-out;
-  }
-
-  .blog__link:hover {
-    opacity: 0.7;
-  }
-
-  .profile__picture-container {
-    border-radius: 9999px;
-    height: 6rem; /* Fix for aspect ratio */
-    margin: 0 0 1rem 0;
-    overflow: hidden;
-    width: 6rem; /* Fix for aspect ratio */
-  }
-
-  .profile__picture {
-    display: block;
-    height: 100%; /* Let the height adjust proportionally */
-    object-fit: cover; /* Maintain aspect ratio and cover the container */
-    width: 100%; /* Ensure the image takes up the container's width */
-  }
-
-  @media (min-width: 768px) {
-    .profile {
-      padding: 3rem 0 0 0;
-    }
-
-    .profile__picture-container {
-      border-radius: 9999px;
-      height: 128px; /* Fix for aspect ratio */
-      width: 128px; /* Fix for aspect ratio */
-
-      padding: 0 2rem 0 0;
-    }
-    .profile__details {
-      flex: 1 1 50%;
-      text-align: left;
-    }
-
-    .profile__picture {
-      margin: 0 2rem 1rem 0;
-    }
-
-    .featured-blogs {
-      padding: 3rem 0 0 0;
-    }
-  }
-</style>

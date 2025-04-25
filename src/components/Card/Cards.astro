@@ -1,0 +1,13 @@
+---
+import Card from "./Card.astro";
+import "./styles.css";
+import type { CardListProps } from "./types";
+
+// Retrieve the cards prop
+const { cards } = Astro.props as CardListProps;
+---
+
+<div class="cards">
+  <!-- Dynamically render multiple Card components and spread the required card props -->
+  {cards.map((card) => <Card {...card} key={card.to} />)}
+</div>

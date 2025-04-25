@@ -93,7 +93,7 @@ Our journey begins with the creation of the simplest form of a web server. We'll
 First, we need to create a project. We'll use **Cargo**, Rust's package manager, to create a new project. We'll call our project `simple-web-server`.
 
 ```bash
-$ cargo new simple-web-server
+cargo new simple-web-server
 ```
 
 This command creates a new project with the following structure:
