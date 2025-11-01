@@ -51,7 +51,7 @@
     "tsc:watch": "tsc --watch"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
+    "@astrojs/check": "^0.9.5",
     "@astrojs/netlify": "^6.6.0",
     "@astrojs/sitemap": "^3.6.0",
     "@netlify/blobs": "^10.0.11",
