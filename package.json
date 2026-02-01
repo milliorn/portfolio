@@ -55,7 +55,7 @@
     "@astrojs/netlify": "^6.6.0",
     "@astrojs/sitemap": "^3.6.0",
     "@netlify/blobs": "^10.5.0",
-    "astro": "^5.16.6",
+    "astro": "^5.17.1",
     "unstorage": "^1.17.1"
   },
   "devDependencies": {
