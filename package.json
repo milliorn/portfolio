@@ -9,7 +9,7 @@
   "private": "true",
   "repository": "https://github.com/milliorn/portfolio",
   "type": "module",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "keywords": [
     "astro",
     "astrojs",
