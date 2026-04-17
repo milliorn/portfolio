@@ -1,0 +1,66 @@
+components:
+  - changed-files:
+      - any-glob-to-any-file:
+          - src/components/**
+
+layouts:
+  - changed-files:
+      - any-glob-to-any-file:
+          - src/layouts/**
+
+pages:
+  - changed-files:
+      - any-glob-to-any-file:
+          - src/pages/**
+
+styles:
+  - changed-files:
+      - any-glob-to-any-file:
+          - src/styles/**
+          - src/components/**/styles.css
+
+content:
+  - changed-files:
+      - any-glob-to-any-file:
+          - src/pages/**/*.md
+          - src/pages/**/*.mdx
+
+config:
+  - changed-files:
+      - any-glob-to-any-file:
+          - src/config.ts
+          - src/env.d.ts
+          - astro.config.mjs
+          - tsconfig.json
+          - .eslintrc.json
+          - .prettierrc
+          - .markdownlint.json
+          - .eslintignore
+          - .prettierignore
+          - .gitignore
+          - .vscode/**
+
+documentation:
+  - changed-files:
+      - any-glob-to-any-file:
+          - README.md
+          - "*.md"
+          - LICENSE
+
+dependencies:
+  - changed-files:
+      - any-glob-to-any-file:
+          - package.json
+          - package-lock.json
+
+github_actions:
+  - changed-files:
+      - any-glob-to-any-file:
+          - .github/workflows/**
+          - .github/labeler.yml
+          - .github/dependabot.yml
+
+public:
+  - changed-files:
+      - any-glob-to-any-file:
+          - public/**
