@@ -25,16 +25,16 @@ A personal portfolio website for Scott Milliorn, a Software Engineer based in Ca
 
 ## Tech Stack
 
-| Layer | Technology |
-| --- | --- |
-| Framework | [Astro](https://astro.build/) v5 |
-| Language | TypeScript |
-| Adapter | `@astrojs/netlify` (SSR) |
-| Hosting | [Netlify](https://www.netlify.com/) |
-| PWA | `@vite-pwa/astro` |
-| Sitemap | `@astrojs/sitemap` |
-| Linting | ESLint + `eslint-plugin-astro` |
-| Formatting | Prettier + `prettier-plugin-astro` |
+| Layer      | Technology                          |
+| ---------- | ----------------------------------- |
+| Framework  | [Astro](https://astro.build/) v5    |
+| Language   | TypeScript                          |
+| Adapter    | `@astrojs/netlify` (SSR)            |
+| Hosting    | [Netlify](https://www.netlify.com/) |
+| PWA        | `@vite-pwa/astro`                   |
+| Sitemap    | `@astrojs/sitemap`                  |
+| Linting    | ESLint + `eslint-plugin-astro`      |
+| Formatting | Prettier + `prettier-plugin-astro`  |
 
 ---
 
@@ -91,16 +91,16 @@ The dev server starts at `http://localhost:4321` by default.
 
 ## Available Scripts
 
-| Script | Description |
-| --- | --- |
-| `npm run astro:dev` | Start local development server |
-| `npm run astro:build` | Build for production |
-| `npm run astro:preview` | Preview the production build locally |
-| `npm run astro:check` | Run Astro type checking |
-| `npm run lint:check` | Run all linters and type checks |
-| `npm run lint:fix` | Auto-fix formatting and lint errors |
-| `npm run prettier:write` | Format all files with Prettier |
-| `npm run tsc:check` | Check TypeScript without emitting files |
+| Script                   | Description                             |
+| ------------------------ | --------------------------------------- |
+| `npm run astro:dev`      | Start local development server          |
+| `npm run astro:build`    | Build for production                    |
+| `npm run astro:preview`  | Preview the production build locally    |
+| `npm run astro:check`    | Run Astro type checking                 |
+| `npm run lint:check`     | Run all linters and type checks         |
+| `npm run lint:fix`       | Auto-fix formatting and lint errors     |
+| `npm run prettier:write` | Format all files with Prettier          |
+| `npm run tsc:check`      | Check TypeScript without emitting files |
 
 ---
 
