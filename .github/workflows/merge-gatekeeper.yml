@@ -10,6 +10,7 @@ on:
 jobs:
   merge-gatekeeper:
     runs-on: ubuntu-latest
+    timeout-minutes: 2
     permissions:
       checks: read
       statuses: read
@@ -18,3 +19,9 @@ jobs:
         uses: upsidr/merge-gatekeeper@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          # Informational Netlify config check, not the actual deploy
+          # (that's the separate netlify/.../deploy-preview status). Its
+          # webhook left this one stuck in_progress with no completion
+          # event even after the real deploy finished, which would
+          # otherwise hang this job until timeout.
+          ignored: "Pages changed - milliorn-portfolio"
