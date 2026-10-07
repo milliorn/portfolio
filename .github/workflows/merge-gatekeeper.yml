@@ -5,12 +5,16 @@ on:
   pull_request:
     branches:
       - main
-      - master
 
 jobs:
   merge-gatekeeper:
     runs-on: ubuntu-latest
-    timeout-minutes: 2
+    # This job waits on build (ci.yml), which itself varies 40-104s, so
+    # merge-gatekeeper's own real duration tracks that variance plus
+    # polling overhead: 45-110s observed across recent runs, leaving as
+    # little as 10s margin at 2min. 5min covers that with real headroom
+    # without masking a genuinely stuck check.
+    timeout-minutes: 5
     permissions:
       checks: read
       statuses: read
@@ -19,9 +23,10 @@ jobs:
         uses: upsidr/merge-gatekeeper@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          # Informational Netlify config check, not the actual deploy
-          # (that's the separate netlify/.../deploy-preview status). Its
-          # webhook left this one stuck in_progress with no completion
-          # event even after the real deploy finished, which would
-          # otherwise hang this job until timeout.
-          ignored: "Pages changed - milliorn-portfolio"
+          # Informational Netlify config checks, not the actual deploy
+          # (that's the separate netlify/.../deploy-preview status). Their
+          # webhook has repeatedly left one of them stuck in_progress with
+          # no completion event even after the real deploy finished, which
+          # would otherwise hang this job until timeout. Header rules
+          # joined Pages changed here after stalling for real on PR #323.
+          ignored: "Pages changed - milliorn-portfolio,Header rules - milliorn-portfolio"

@@ -20,7 +20,11 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 2
+    # Real run times vary 40-104s across recent runs (npm/build variance),
+    # not the ~10-20s this repo's other workflows see. 2min left as little
+    # as 16s of margin on the slow end, genuinely flaky. 3min covers the
+    # observed range with real headroom.
+    timeout-minutes: 3
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7.0.1
