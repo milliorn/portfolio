@@ -23,9 +23,10 @@ jobs:
         uses: upsidr/merge-gatekeeper@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          # Informational Netlify config check, not the actual deploy
-          # (that's the separate netlify/.../deploy-preview status). Its
-          # webhook left this one stuck in_progress with no completion
-          # event even after the real deploy finished, which would
-          # otherwise hang this job until timeout.
-          ignored: "Pages changed - milliorn-portfolio"
+          # Informational Netlify config checks, not the actual deploy
+          # (that's the separate netlify/.../deploy-preview status). Their
+          # webhook has repeatedly left one of them stuck in_progress with
+          # no completion event even after the real deploy finished, which
+          # would otherwise hang this job until timeout. Header rules
+          # joined Pages changed here after stalling for real on PR #323.
+          ignored: "Pages changed - milliorn-portfolio,Header rules - milliorn-portfolio"
