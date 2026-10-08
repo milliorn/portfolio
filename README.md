@@ -56,7 +56,9 @@ src/
 │   ├── about.astro
 │   ├── index.astro    # Home page
 │   ├── philosophies.md
+│   ├── robots.txt.ts  # Generated robots.txt
 │   ├── tech.md
+│   ├── types.ts
 │   └── work.md
 ├── styles/            # Page-scoped CSS files
 └── config.ts          # Site-wide URLs and owner metadata
@@ -99,6 +101,9 @@ The dev server starts at `http://localhost:4321` by default.
 | `npm run astro:check`    | Run Astro type checking                 |
 | `npm run lint:check`     | Run all linters and type checks         |
 | `npm run lint:fix`       | Auto-fix formatting and lint errors     |
+| `npm run eslint:check`   | Run ESLint                              |
+| `npm run eslint:fix`     | Auto-fix ESLint errors                  |
+| `npm run prettier:check` | Check formatting with Prettier          |
 | `npm run prettier:write` | Format all files with Prettier          |
 | `npm run tsc:check`      | Check TypeScript without emitting files |
 
