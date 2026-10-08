@@ -52,10 +52,10 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
-    "@astrojs/netlify": "^6.6.5",
+    "@astrojs/netlify": "^8.2.4",
     "@astrojs/sitemap": "^3.7.4",
     "@netlify/blobs": "^10.7.13",
-    "astro": "^5.18.1",
+    "astro": "^7.2.8",
     "unstorage": "^1.17.5"
   },
   "devDependencies": {
