@@ -1,6 +1,7 @@
 # Ignore node and build artifacts
 node_modules/
 dist/
+.astro/
 .cache/
 .netlify/
 public/

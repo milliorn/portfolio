@@ -68,7 +68,7 @@ src/
 
 ## Prerequisites
 
-- **Node.js** `18.20.8 || ^20.3.0 || >=22.0.0`
+- **Node.js** `^20.19.5 || ^22.13.0 || >=24.0.0`
 - **npm** (bundled with Node.js)
 
 ---

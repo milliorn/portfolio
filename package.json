@@ -1,12 +1,12 @@
 {
   "name": "portfolio",
   "engines": {
-    "node": "18.20.8 || ^20.3.0 || >=22.0.0"
+    "node": "^20.19.5 || ^22.13.0 || >=24.0.0"
   },
   "author": "Scott Milliorn",
   "description": "A personal portfolio website built with Astro, showcasing projects, blog posts, and contact information",
   "license": "GPL-3.0",
-  "private": "true",
+  "private": true,
   "repository": "https://github.com/milliorn/portfolio",
   "type": "module",
   "version": "0.0.5",
@@ -44,7 +44,7 @@
     "lint:fix": "npm run prettier:write && npm run eslint:fix",
     "eslint:check": "eslint \"src/**/*.{ts,tsx,astro}\"",
     "eslint:fix": "eslint \"src/**/*.{ts,tsx,astro}\" --fix",
-    "eslint:watch": "esw -w --clear --ext .js,.jsx,.ts,.tsx,.astro src",
+    "eslint:watch": "esw -w --clear --ext .ts,.tsx,.astro src",
     "prettier:check": "prettier . --check",
     "prettier:write": "prettier --write .",
     "tsc:check": "tsc --noEmit",

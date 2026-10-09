@@ -20,7 +20,6 @@ yarn.lock
 pnpm-lock.yaml
 
 # Generated config / metadata
-package-lock.json
 npm-debug.log*
 yarn-error.log*
 
