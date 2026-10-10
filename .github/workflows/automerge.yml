@@ -54,19 +54,11 @@ jobs:
 
       # --auto queues the merge so all required branch protection checks must
       # pass first (e.g. dependency-review) before the merge goes through.
-      #
-      # The merge uses DEPENDABOT_REBASE_PAT instead of the default
-      # GITHUB_TOKEN: GitHub does not let GITHUB_TOKEN-authored events
-      # trigger other workflows (loop prevention), so a GITHUB_TOKEN merge
-      # silently never fired dependabot-rebase-cascade.yml's
-      # pull_request_target: closed trigger. A PAT-authored merge is a
-      # normal user action and does trigger it. The approval doesn't need
-      # the elevated token, so only the merge call below overrides it.
       - name: Allow — approve and merge
         if: steps.decision.outputs.action == 'allow'
         run: |
           gh pr review "$PR_URL" --approve -b "Auto-approved: **${{ steps.metadata.outputs.update-type }}** ${{ steps.metadata.outputs.package-ecosystem }} update."
-          GITHUB_TOKEN="${{ secrets.DEPENDABOT_REBASE_PAT }}" gh pr merge "$PR_URL" --squash --auto
+          gh pr merge "$PR_URL" --squash --auto
 
       - name: Deny — unexpected update
         if: steps.decision.outputs.action == 'deny'
