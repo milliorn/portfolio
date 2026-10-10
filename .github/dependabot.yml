@@ -12,6 +12,15 @@ updates:
     directory: "/"
     schedule:
       interval: "monthly"
+    groups:
+      astro:
+        patterns:
+          - "astro"
+          - "@astrojs/*"
+          - "@vite-pwa/astro"
+        update-types:
+          - "minor"
+          - "patch"
     ignore:
       - dependency-name: "*"
         update-types:
