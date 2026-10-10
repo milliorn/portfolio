@@ -5,8 +5,9 @@ dist/
 # Coverage reports
 coverage/
 
-# Astro cache
+# Astro cache and generated types
 .cache/
+.astro/
 
 # Netlify CLI state
 .netlify/
@@ -24,5 +25,4 @@ npm-debug.log*
 yarn-error.log*
 
 # Environment files
-.env
-.env.*.local
+.env*
