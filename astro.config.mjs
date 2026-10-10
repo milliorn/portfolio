@@ -15,7 +15,7 @@ export default defineConfig({
   }),
   // https://docs.astro.build/en/guides/integrations-guide/netlify/#netlify-image-cdn-support
   image: {
-    domains: ["https://picsum.photos"],
+    domains: ["picsum.photos"],
   },
   integrations: [
     AstroPWA(),
