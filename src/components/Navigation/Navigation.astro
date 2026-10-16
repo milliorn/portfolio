@@ -68,8 +68,8 @@ import "./styles.css";
 
     navMenu?.querySelectorAll("a").forEach((link) =>
       link.addEventListener("click", () => {
-        toggle.classList.remove("open");
-        toggle.setAttribute("aria-expanded", "false");
+        toggle?.classList.remove("open");
+        toggle?.setAttribute("aria-expanded", "false");
         navMenu?.classList.add("closing");
         navMenu?.classList.remove("open");
         setTimeout(() => {

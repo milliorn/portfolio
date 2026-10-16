@@ -64,26 +64,17 @@ const head = {
       const prefersDark = window.matchMedia(
         "(prefers-color-scheme: dark)"
       ).matches;
-      const savedTheme = localStorage.getItem("theme");
+      const userTheme = localStorage.getItem("userTheme");
 
-      // If no saved theme, set it based on system preference
-      if (!savedTheme) {
-        localStorage.setItem("theme", prefersDark ? "dark" : "light");
-      }
+      // Apply the user's explicit choice, falling back to system preference
+      const isDark = userTheme ? userTheme === "dark" : prefersDark;
+      root.classList.toggle("dark", isDark);
 
-      // Apply the saved theme
-      if (localStorage.getItem("theme") === "dark") {
-        root.classList.add("dark");
-      } else {
-        root.classList.remove("dark");
-      }
-
-      // Update theme if system preference changes — only when user hasn't overridden it
+      // Keep following system preference until the user explicitly chooses a theme
       window
         .matchMedia("(prefers-color-scheme: dark)")
         .addEventListener("change", (e) => {
-          const hasUserPreference = localStorage.getItem("theme");
-          if (!hasUserPreference) {
+          if (!localStorage.getItem("userTheme")) {
             root.classList.toggle("dark", e.matches);
           }
         });

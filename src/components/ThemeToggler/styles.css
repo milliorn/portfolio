@@ -23,16 +23,21 @@ button:active {
 }
 
 .sun {
-  /* Show the sun icon by default (for dark theme) */
+  /* Show the sun icon by default (light theme) */
   fill: #f1c40f;
 }
 
-:global(.light) .sun {
-  /* Hide the sun icon when the light theme is active */
+.moon {
+  /* Hide the moon icon by default (light theme) */
   fill: transparent;
 }
 
-:global(.light) .moon {
-  /* Show the moon icon when the light theme is active */
+:global(html.dark) .sun {
+  /* Hide the sun icon when the dark theme is active */
+  fill: transparent;
+}
+
+:global(html.dark) .moon {
+  /* Show the moon icon when the dark theme is active */
   fill: white; /* Adjust if you want a different moon color */
 }
