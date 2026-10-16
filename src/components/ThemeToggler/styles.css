@@ -32,12 +32,12 @@ button:active {
   fill: transparent;
 }
 
-:global(html.dark) .sun {
+html.dark .sun {
   /* Hide the sun icon when the dark theme is active */
   fill: transparent;
 }
 
-:global(html.dark) .moon {
+html.dark .moon {
   /* Show the moon icon when the dark theme is active */
   fill: white; /* Adjust if you want a different moon color */
 }
