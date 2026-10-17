@@ -6,6 +6,6 @@ export const site = {
 export const url = {
   github: "https://github.com/milliorn",
   linkedin: "https://www.linkedin.com/in/scott-milliorn/",
-  poster: "https://picsum.photos/1080.webp",
+  poster: "https://picsum.photos/600.webp",
   twitter: "https://twitter.com/scottmilliorn",
 };
