@@ -1,6 +1,7 @@
 ---
 // css
 import "../styles/index.astro.css";
+import { Image } from "astro:assets";
 import Cards from "../components/Card/Cards.astro";
 import Main from "../layouts/Main.astro";
 import { url } from "../config";
@@ -20,13 +21,14 @@ const text = {
 <Main title={text.title}>
   <div class="profile">
     <div class="profile__picture-container">
-      <img
+      <Image
         src={url.poster}
         alt={text.developer.name}
         class="profile__picture"
-        width="600"
-        height="600"
-        fetchpriority="high"
+        width={286}
+        height={286}
+        densities={[1, 2]}
+        priority
       />
     </div>
     <div class="profile__details">
