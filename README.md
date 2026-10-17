@@ -3,7 +3,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/ca85c3ca-1f14-47c8-a7c7-1b4abbed0eff/deploy-status)](https://app.netlify.com/sites/milliorn-portfolio/deploys)
 [![CodeQL](https://github.com/milliorn/portfolio/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/milliorn/portfolio/actions/workflows/github-code-scanning/codeql)
 
-A personal portfolio website for Scott Milliorn, a Software Engineer based in California. The site showcases work history, guiding philosophies, blog posts, and interests beyond technology. Built as a server-rendered Progressive Web App and deployed continuously to Netlify.
+A personal portfolio website for Scott Milliorn, a Software Engineer based in California. The site showcases work history, guiding philosophies, and interests beyond technology. Built as a server-rendered Progressive Web App and deployed continuously to Netlify.
 
 **Live site:** [milliorn-portfolio.netlify.app](https://milliorn-portfolio.netlify.app)
 
@@ -13,7 +13,6 @@ A personal portfolio website for Scott Milliorn, a Software Engineer based in Ca
 
 - **Profile** — Introduction, title, and location summary on the home page
 - **Work History** — Career timeline covering software development and prior roles
-- **Blog** — Opinion articles on topics including fitness, web development, and Rust
 - **Philosophies** — Personal principles and guiding values
 - **Tech interests** — Pursuits and hobbies beyond software
 - **Dark/light theme toggle** — Persisted theme preference
@@ -49,10 +48,9 @@ src/
 │   ├── Navigation/    # Top navigation bar
 │   └── ThemeToggler/  # Dark/light mode toggle
 ├── layouts/
-│   ├── Blog.astro     # Layout for blog/markdown pages
+│   ├── Blog.astro     # Layout for markdown content pages
 │   └── Main.astro     # Root page layout
 ├── pages/
-│   ├── blogs/         # Markdown blog posts
 │   ├── about.astro
 │   ├── index.astro    # Home page
 │   ├── philosophies.md
