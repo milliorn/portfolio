@@ -63,17 +63,13 @@ const head = {
       const root = document.documentElement;
       const media = window.matchMedia("(prefers-color-scheme: dark)");
 
-      // Migrate the legacy "theme" key (pre-rename) to "userTheme" so
-      // returning visitors keep their explicitly chosen theme.
-      let userTheme = localStorage.getItem("userTheme");
-      if (!userTheme) {
-        const legacyTheme = localStorage.getItem("theme");
-        if (legacyTheme) {
-          userTheme = legacyTheme;
-          localStorage.setItem("userTheme", legacyTheme);
-          localStorage.removeItem("theme");
-        }
-      }
+      // The legacy "theme" key was auto-seeded on every visit regardless of
+      // whether the user ever made a choice, so it carries no signal that
+      // distinguishes an explicit choice from an accidental default. Drop
+      // it rather than migrating it, so returning visitors resume following
+      // system preference instead of being locked to a stale guess.
+      localStorage.removeItem("theme");
+      const userTheme = localStorage.getItem("userTheme");
 
       // Apply the user's explicit choice, falling back to system preference
       const isDark = userTheme ? userTheme === "dark" : media.matches;
