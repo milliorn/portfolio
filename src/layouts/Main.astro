@@ -61,32 +61,30 @@ const head = {
 
     <script is:inline type="module">
       const root = document.documentElement;
-      const prefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      ).matches;
-      const savedTheme = localStorage.getItem("theme");
+      const media = window.matchMedia("(prefers-color-scheme: dark)");
 
-      // If no saved theme, set it based on system preference
-      if (!savedTheme) {
-        localStorage.setItem("theme", prefersDark ? "dark" : "light");
+      // Migrate the legacy "theme" key (pre-rename) to "userTheme" so
+      // returning visitors keep their explicitly chosen theme.
+      let userTheme = localStorage.getItem("userTheme");
+      if (!userTheme) {
+        const legacyTheme = localStorage.getItem("theme");
+        if (legacyTheme) {
+          userTheme = legacyTheme;
+          localStorage.setItem("userTheme", legacyTheme);
+          localStorage.removeItem("theme");
+        }
       }
 
-      // Apply the saved theme
-      if (localStorage.getItem("theme") === "dark") {
-        root.classList.add("dark");
-      } else {
-        root.classList.remove("dark");
-      }
+      // Apply the user's explicit choice, falling back to system preference
+      const isDark = userTheme ? userTheme === "dark" : media.matches;
+      root.classList.toggle("dark", isDark);
 
-      // Update theme if system preference changes — only when user hasn't overridden it
-      window
-        .matchMedia("(prefers-color-scheme: dark)")
-        .addEventListener("change", (e) => {
-          const hasUserPreference = localStorage.getItem("theme");
-          if (!hasUserPreference) {
-            root.classList.toggle("dark", e.matches);
-          }
-        });
+      // Keep following system preference until the user explicitly chooses a theme
+      media.addEventListener("change", (e) => {
+        if (!localStorage.getItem("userTheme")) {
+          root.classList.toggle("dark", e.matches);
+        }
+      });
     </script>
   </head>
   <body>

@@ -24,7 +24,7 @@ import "./styles.css";
 
     toggle?.addEventListener("click", () => {
       const isDark = root.classList.toggle("dark");
-      localStorage.setItem("theme", isDark ? "dark" : "light");
+      localStorage.setItem("userTheme", isDark ? "dark" : "light");
     });
   });
 </script>
