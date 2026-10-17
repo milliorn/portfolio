@@ -17,7 +17,8 @@ const pageTitle = `${title} - ${developerName} Portfolio`;
       alt=""
       width={640}
       height={640}
-      widths={[320, 480, 640, 1080]}
+      widths={[320, 480, 576, 1152]}
+      sizes="(min-width: 576px) 576px, 100vw"
       layout="constrained"
       class="figure__image"
     />
@@ -42,11 +43,13 @@ const pageTitle = `${title} - ${developerName} Portfolio`;
   }
 
   .figure__image {
+    aspect-ratio: 1 / 1;
     border-radius: 0.75rem;
     display: block;
     height: auto;
     margin: 0 auto;
     max-width: 100%;
+    object-fit: cover;
   }
 
   .figure__caption {
