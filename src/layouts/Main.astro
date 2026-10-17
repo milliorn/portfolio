@@ -61,23 +61,30 @@ const head = {
 
     <script is:inline type="module">
       const root = document.documentElement;
-      const prefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      ).matches;
-      const userTheme = localStorage.getItem("userTheme");
+      const media = window.matchMedia("(prefers-color-scheme: dark)");
+
+      // Migrate the legacy "theme" key (pre-rename) to "userTheme" so
+      // returning visitors keep their explicitly chosen theme.
+      let userTheme = localStorage.getItem("userTheme");
+      if (!userTheme) {
+        const legacyTheme = localStorage.getItem("theme");
+        if (legacyTheme) {
+          userTheme = legacyTheme;
+          localStorage.setItem("userTheme", legacyTheme);
+          localStorage.removeItem("theme");
+        }
+      }
 
       // Apply the user's explicit choice, falling back to system preference
-      const isDark = userTheme ? userTheme === "dark" : prefersDark;
+      const isDark = userTheme ? userTheme === "dark" : media.matches;
       root.classList.toggle("dark", isDark);
 
       // Keep following system preference until the user explicitly chooses a theme
-      window
-        .matchMedia("(prefers-color-scheme: dark)")
-        .addEventListener("change", (e) => {
-          if (!localStorage.getItem("userTheme")) {
-            root.classList.toggle("dark", e.matches);
-          }
-        });
+      media.addEventListener("change", (e) => {
+        if (!localStorage.getItem("userTheme")) {
+          root.classList.toggle("dark", e.matches);
+        }
+      });
     </script>
   </head>
   <body>

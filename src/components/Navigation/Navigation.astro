@@ -50,7 +50,9 @@ import "./styles.css";
       activeLink.setAttribute("aria-current", "page");
     }
 
-    toggle?.addEventListener("click", () => {
+    if (!toggle) return;
+
+    toggle.addEventListener("click", () => {
       const isOpen = toggle.classList.toggle("open");
       toggle.setAttribute("aria-expanded", String(isOpen));
 
@@ -68,8 +70,8 @@ import "./styles.css";
 
     navMenu?.querySelectorAll("a").forEach((link) =>
       link.addEventListener("click", () => {
-        toggle?.classList.remove("open");
-        toggle?.setAttribute("aria-expanded", "false");
+        toggle.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
         navMenu?.classList.add("closing");
         navMenu?.classList.remove("open");
         setTimeout(() => {
