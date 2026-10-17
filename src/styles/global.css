@@ -134,3 +134,7 @@ li {
 .text-center {
   text-align: center;
 }
+
+.accent-red {
+  color: var(--accent-red);
+}
