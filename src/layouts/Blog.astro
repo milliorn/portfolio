@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import Main from "./Main.astro";
 import type { BlogProps } from "./types";
 
@@ -11,7 +12,16 @@ const pageTitle = `${title} - ${developerName} Portfolio`;
 
 <Main title={pageTitle}>
   <figure class="figure">
-    <img src={poster} alt="" width="100%" height="auto" class="figure__image" />
+    <Image
+      src={poster}
+      alt=""
+      width={640}
+      height={640}
+      widths={[320, 480, 576, 1152]}
+      sizes="(min-width: 656px) 576px, calc(100vw - 80px)"
+      layout="constrained"
+      class="figure__image"
+    />
     <figcaption class="figure__caption"></figcaption>
   </figure>
   <h1>{title}</h1>
@@ -33,11 +43,13 @@ const pageTitle = `${title} - ${developerName} Portfolio`;
   }
 
   .figure__image {
+    aspect-ratio: 1 / 1;
     border-radius: 0.75rem;
     display: block;
     height: auto;
     margin: 0 auto;
     max-width: 100%;
+    object-fit: cover;
   }
 
   .figure__caption {
