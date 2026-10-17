@@ -45,7 +45,7 @@
 @media (min-width: 768px) {
   .profile__picture-container {
     flex: 0 1 50%;
-    width: 20rem;
+    width: 18rem;
     max-width: 50%;
     display: flex;
     justify-content: center;
