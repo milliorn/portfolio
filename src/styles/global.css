@@ -38,6 +38,7 @@ html {
   /* #ffffff; */
   --grey-900: #111111;
   /* #fafafa; */
+  --accent-red: #a30000;
 }
 
 html.dark {
@@ -50,6 +51,7 @@ html.dark {
   /* #333333; */
   --grey-900: #fafafa;
   /* #111111; */
+  --accent-red: #ff8080;
 }
 
 body {
@@ -131,4 +133,8 @@ li {
 
 .text-center {
   text-align: center;
+}
+
+.accent-red {
+  color: var(--accent-red);
 }
