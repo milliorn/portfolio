@@ -4,7 +4,7 @@
     "node": "^20.19.5 || ^22.13.0 || >=24.0.0"
   },
   "author": "Scott Milliorn",
-  "description": "A personal portfolio website built with Astro, showcasing projects, blog posts, and contact information",
+  "description": "A personal portfolio website built with Astro, showcasing projects and contact information",
   "license": "GPL-3.0",
   "private": true,
   "repository": "https://github.com/milliorn/portfolio",
@@ -24,7 +24,6 @@
     "typescript",
     "javascript",
     "css",
-    "blog",
     "resume"
   ],
   "scripts": {

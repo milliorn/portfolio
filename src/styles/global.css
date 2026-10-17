@@ -103,7 +103,7 @@ a:hover {
 
 a:active {
   font-weight: 900;
-  color: var(--background);
+  color: var(--grey-900);
 }
 
 a:focus {

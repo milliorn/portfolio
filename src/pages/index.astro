@@ -3,25 +3,7 @@
 import "../styles/index.astro.css";
 import Cards from "../components/Card/Cards.astro";
 import Main from "../layouts/Main.astro";
-import type { BlogFrontMatter } from "./types";
 import { url } from "../config";
-
-// https://vite.dev/guide/features.html#glob-import
-const modules = import.meta.glob<{ frontmatter: BlogFrontMatter }>(
-  "../pages/blogs/*.md",
-  { eager: true }
-);
-
-const blogs = Object.entries(modules)
-  .map(([url, mod]) => ({
-    url: url.replace("../pages", "").replace(/\.md$/, ""),
-    frontmatter: mod.frontmatter,
-  }))
-  .sort(
-    (a, b) =>
-      new Date(b.frontmatter.date).getTime() -
-      new Date(a.frontmatter.date).getTime()
-  );
 
 const text = {
   title: "Scott Milliorn Portfolio",
@@ -31,10 +13,6 @@ const text = {
     title: "Software Engineer",
     details:
       "Highly skilled and innovative professional with expertise in designing, developing, and maintaining web applications and software solutions. Deep understanding of modern web technologies and frameworks.",
-  },
-  blogs: {
-    title: "Featured Blogs",
-    description: "Opinion articles crafted from my personal interests.",
   },
 };
 ---
@@ -83,21 +61,4 @@ const text = {
       },
     ]}
   />
-
-  <div class="featured-blogs">
-    <h3 class="featured-blogs__title">{text.blogs.title}</h3>
-    <p class="featured-blogs__description">{text.blogs.description}</p>
-  </div>
-
-  <ul>
-    {
-      blogs.map((blog) => (
-        <li class="blogs__list">
-          <a href={blog.url} class="blog__link">
-            {blog.frontmatter.title}
-          </a>
-        </li>
-      ))
-    }
-  </ul>
 </Main>
