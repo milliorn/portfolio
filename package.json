@@ -55,7 +55,7 @@
     "@astrojs/sitemap": "^3.7.4",
     "@netlify/blobs": "^10.7.13",
     "astro": "^5.18.1",
-    "unstorage": "^1.17.5"
+    "unstorage": "^1.17.6"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^7.18.0",
