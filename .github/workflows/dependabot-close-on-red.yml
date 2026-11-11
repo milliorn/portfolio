@@ -1,0 +1,73 @@
+name: Dependabot close on red
+
+# Green Dependabot PRs merge on their own: automerge.yml queues `gh pr merge
+# --auto`, and GitHub merges once the required checks pass. Red ones had no
+# exit and sat open forever (e.g. #383: astro@5.18.2 fails dependency-review
+# on advisories fixed only in astro 6/7, so merge-gatekeeper fails and the
+# auto-merge never fires). This closes them.
+#
+# merge-gatekeeper is the single verdict: it waits on every other check on
+# the commit (build, dependency-review, Netlify deploy-preview, reviewer,
+# labeler) and fails if any of them fails. So "its latest run on the PR's
+# CURRENT head commit completed and did not succeed" == red.
+#
+# Triggers:
+# - workflow_run: right after any Merge Gatekeeper run finishes.
+# - push to main: sweeps PRs that went red before this workflow existed
+#   (like #383) as soon as it lands, and after every merge.
+# - schedule / workflow_dispatch: backstop in case an event is missed.
+# Every trigger runs the same sweep, so there is one code path.
+on:
+  workflow_run:
+    workflows: ["Merge Gatekeeper"]
+    types: [completed]
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+permissions:
+  pull-requests: write
+  checks: read
+  contents: read
+
+jobs:
+  close-red-dependabot-prs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    env:
+      # GITHUB_TOKEN is enough to close and comment. Closing (not merging)
+      # doesn't need to trigger other workflows; dependabot-rebase-cascade.yml
+      # only reacts to merges.
+      GH_TOKEN: ${{ github.token }}
+      REPO: ${{ github.repository }}
+    steps:
+      - name: Close Dependabot PRs whose merge-gatekeeper is red
+        run: |
+          set -euo pipefail
+          # headRefOid = the PR's current head commit. Checking the verdict on
+          # that exact commit means a stale red run from before a rebase can
+          # never close a PR whose new commit is still running or green.
+          gh pr list --repo "$REPO" --author "app/dependabot" --state open \
+            --json number,headRefOid \
+            --jq '.[] | "\(.number) \(.headRefOid)"' |
+          while read -r pr sha; do
+            # Latest merge-gatekeeper run on that commit. Re-runs create new
+            # check runs with higher ids; sort by id, not started_at, because
+            # a queued re-run has started_at=null and would sort first.
+            verdict=$(gh api "repos/$REPO/commits/$sha/check-runs?check_name=merge-gatekeeper&per_page=100" \
+              --jq '.check_runs | sort_by(.id) | last | if . == null then "none" else "\(.status) \(.conclusion)" end')
+            echo "PR #$pr @ ${sha:0:7}: merge-gatekeeper = $verdict"
+            case "$verdict" in
+              none|"queued "*|"in_progress "*|"completed success")
+                continue ;;  # not run yet, still running, or green
+            esac
+            url="https://github.com/$REPO/commit/$sha/checks"
+            gh pr close "$pr" --repo "$REPO" --comment "Auto-closed: merge-gatekeeper finished \`${verdict#completed }\` on ${sha:0:7}, so this update can't merge. See the failing check(s): $url"
+            echo "Closed PR #$pr"
+          done
