@@ -27,6 +27,7 @@ jobs:
           # (that's the separate netlify/.../deploy-preview status). Their
           # webhook has repeatedly left one of them stuck in_progress with
           # no completion event even after the real deploy finished, which
-          # would otherwise hang this job until timeout. Header rules
-          # joined Pages changed here after stalling for real on PR #323.
-          ignored: "Pages changed - milliorn-portfolio,Header rules - milliorn-portfolio"
+          # would otherwise hang this job until timeout. All three have
+          # stalled: Pages changed (Oct 6), Header rules (Oct 7, PR #323),
+          # and Redirect rules (Oct 16, and Oct 30 on PR #381).
+          ignored: "Pages changed - milliorn-portfolio,Header rules - milliorn-portfolio,Redirect rules - milliorn-portfolio"

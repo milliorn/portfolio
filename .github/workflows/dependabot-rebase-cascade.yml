@@ -1,0 +1,36 @@
+name: Dependabot stale rebase
+
+on:
+  pull_request_target:
+    types: [closed]
+    branches: [main]
+
+permissions:
+  pull-requests: write
+
+jobs:
+  rebase-stale-dependabot-prs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    # Only fire when a Dependabot PR was actually merged (not closed/abandoned)
+    if: |
+      github.event.pull_request.merged == true &&
+      github.event.pull_request.user.login == 'dependabot[bot]'
+    env:
+      # PAT, not GITHUB_TOKEN: Dependabot only accepts "@dependabot rebase"
+      # from a user with push access, and rejects github-actions[bot]
+      # ("Sorry, only users with push access can use that command").
+      GH_TOKEN: ${{ secrets.DEPENDABOT_REBASE_PAT }}
+
+    steps:
+      - name: Rebase remaining open Dependabot PRs
+        run: |
+          gh pr list \
+            --repo "${{ github.repository }}" \
+            --author "dependabot[bot]" \
+            --state open \
+            --json number \
+            --jq '.[].number' | \
+          xargs -P 8 -I{} gh pr comment {} \
+            --repo "${{ github.repository }}" \
+            --body "@dependabot rebase"
